@@ -1,22 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Jrand-github.github.io</id>
-    <title>F1n_blog</title>
-    <updated>2021-07-02T12:05:59.237Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Jrand-github.github.io"/>
-    <link rel="self" href="https://Jrand-github.github.io/atom.xml"/>
-    <subtitle>每个人都在过着别人羡慕的生活</subtitle>
-    <logo>https://Jrand-github.github.io/images/avatar.png</logo>
-    <icon>https://Jrand-github.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, F1n_blog</rights>
-    <entry>
-        <title type="html"><![CDATA[文档-内网渗透]]></title>
-        <id>https://Jrand-github.github.io/post/wen-dang-nei-wang-shen-tou/</id>
-        <link href="https://Jrand-github.github.io/post/wen-dang-nei-wang-shen-tou/">
-        </link>
-        <updated>2021-07-02T12:05:11.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="内网安全">内网安全</h1>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>文档-内网渗透 | F1n_blog</title>
+<link rel="shortcut icon" href="https://Jrand-github.github.io/favicon.ico?v=1625227552462">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://Jrand-github.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="文档-内网渗透 | F1n_blog - Atom Feed" href="https://Jrand-github.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="内网安全
+[TOC]
+基本介绍
+基本架构
+
+Kerberos协议原理（图解）
+
+信息收集
+Github项目
+nishang
+https://github.com/samratashok/nishang/releases/tag/v0.7.6..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://Jrand-github.github.io">
+  <img class="avatar" src="https://Jrand-github.github.io/images/avatar.png?v=1625227552462" alt="">
+  </a>
+  <h1 class="site-title">
+    F1n_blog
+  </h1>
+  <p class="site-description">
+    每个人都在过着别人羡慕的生活
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              文档-内网渗透
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-07-02
+              </span>
+              <span>
+                41 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="内网安全">内网安全</h1>
 <p>[TOC]</p>
 <h2 id="基本介绍">基本介绍</h2>
 <h3 id="基本架构">基本架构</h3>
@@ -1055,6 +1137,168 @@ nohup ./teamserver 42.193.186.7 ASDqwe123 &amp;
 <pre><code>执行命令： shell  whoami
 </code></pre>
 <h2 id="empire后渗透">Empire后渗透</h2>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8">内网安全</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D">基本介绍</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84">基本架构</a></li>
+<li><a href="#kerberos%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3">Kerberos协议原理（图解）</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86">信息收集</a>
+<ul>
+<li><a href="#github%E9%A1%B9%E7%9B%AE">Github项目</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B1-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">案例1-基本信息</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B2-%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF">案例2-网络信息</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B3-%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF">案例3-用户信息</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B4-%E5%87%AD%E6%8D%AE%E4%BF%A1%E6%81%AF">案例4-凭据信息</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B5-%E5%9F%9F%E5%86%85%E7%8E%AF%E5%A2%83">案例5-域内环境</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A8%AA%E5%90%91%E6%B8%97%E9%80%8F">横向渗透</a>
+<ul>
+<li><a href="#github%E9%A1%B9%E7%9B%AE-2">GIthub项目</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B1-ipc%E5%9F%9F%E5%85%B1%E4%BA%AB%E7%AE%A1%E9%81%93">案例1-IPC（域共享管道）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B2-%E6%98%8E%E6%96%87hash%E4%BC%A0%E9%80%92atexec-impacket">案例2-明文HASH传递atexec-impacket</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B5-procdumpmimikatz%E9%85%8D%E5%90%88%E5%87%AD%E8%AF%81%E8%8E%B7%E5%8F%96">案例5-Procdump+Mimikatz配合（凭证获取）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B6-hashcat%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3ntlm-hash">案例6-Hashcat暴力破解NTLM Hash</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B7-smb%E6%9C%8D%E5%8A%A1%E6%98%8E%E6%96%87%E6%88%96hash%E4%BC%A0%E9%80%92">案例7-SMB服务明文或hash传递</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B8-wmi%E6%9C%8D%E5%8A%A1%E5%88%A9%E7%94%A8-cscriptwmiexecwmic">案例8-WMI服务利用-cscript,wmiexec,wmic</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B9-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8pth-ntml%E4%BC%A0%E9%80%92">案例9-横向移动PTH NTML传递</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B10-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8ptk-ntml%E4%BC%A0%E9%80%92">案例10-横向移动PTK NTML传递</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B11-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8ptt%E5%93%88%E5%B8%8C%E7%A5%A8%E6%8D%AE%E4%BC%A0%E9%80%92-ms14068kekeo%E6%9C%AC%E5%9C%B0">案例11-横向移动PTT哈希票据传递-ms14068&amp;kekeo&amp;本地</a>
+<ul>
+<li><a href="#ms14-068">MS14-068</a></li>
+<li><a href="#%E5%88%A9%E7%94%A8%E5%B7%A5%E5%85%B7kekeo">利用工具kekeo</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BC%AA%E9%80%A0%E6%9C%AC%E5%9C%B0%E7%A5%A8%E6%8D%AEptt">伪造本地票据（PTT）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B12-rdp%E5%8D%8F%E8%AE%AE%E4%BC%A0%E9%80%92">案例12-RDP协议传递</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B13-kerberoast%E6%94%BB%E5%87%BBspn%E6%89%AB%E6%8F%8F">案例13-Kerberoast攻击(SPN扫描)</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B14-sam%E6%96%87%E4%BB%B6hash%E5%80%BC%E8%8E%B7%E5%8F%96">案例14-sam文件hash值获取</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF">代理技术</a>
+<ul>
+<li><a href="#%E6%A1%88%E4%BE%8B1-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8Fngrok%E6%B5%8B%E8%AF%95%E6%BC%94%E7%A4%BA-%E4%B8%A4%E4%B8%AA%E5%86%85%E7%BD%91%E9%80%9A%E8%AE%AF%E4%B8%8A%E7%BA%BF">案例1-内网穿透Ngrok测试演示-两个内网通讯上线</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B2-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8Ffrp%E8%87%AA%E5%BB%BA%E8%B7%B3%E6%9D%BF%E6%B5%8B%E8%AF%95-%E4%B8%A4%E4%B8%AA%E5%86%85%E7%BD%91%E9%80%9A%E8%AE%AF%E4%B8%8A%E7%BA%BF">案例2-内网穿透Frp自建跳板测试-两个内网通讯上线</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B3-socks%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AFew%E5%B7%A5%E5%85%B7">案例3-Socks代理技术（ew工具）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B4-socks%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AFgofrp%E5%B7%A5%E5%85%B7">案例4-socks反向代理技术（gofrp工具）</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">隧道技术</a>
+<ul>
+<li><a href="#%E6%A1%88%E4%BE%8B1-%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%BA%94%E7%94%A8%E5%B1%82%E6%A3%80%E6%B5%8B%E8%BF%9E%E9%80%9A%E6%80%A7-%E6%A3%80%E6%B5%8B">案例1-网络传输应用层检测连通性-检测</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B2-%E7%BD%91%E7%BB%9C%E5%B1%82icmp%E9%9A%A7%E9%81%93ptunnel%E4%BD%BF%E7%94%A8%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例2-网络层ICMP隧道ptunnel使用(隧道技术)</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B3-%E4%BC%A0%E8%BE%93%E5%B1%82%E8%BD%AC%E5%8F%91%E9%9A%A7%E9%81%93portmap%E4%BD%BF%E7%94%A8">案例3-传输层转发隧道Portmap使用</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B4-%E5%BA%94%E7%94%A8%E5%B1%82dns%E9%9A%A7%E9%81%93%E9%85%8D%E5%90%88cs%E4%B8%8A%E7%BA%BF">案例4-应用层DNS隧道配合CS上线</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B5-cs%E7%9A%84shell-msf%E7%9A%84shell">案例5-CS的SHELL-&gt;MSF的SHELL</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B6-ssh%E9%9A%A7%E9%81%93%E5%8A%A8%E6%80%81%E9%9D%99%E6%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91">案例6-SSH隧道（动态/静态端口转发）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B7-dns%E9%9A%A7%E9%81%93%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例7-DNS隧道（隧道技术）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B8-socks%E4%BB%A3%E7%90%86%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例8-socks代理（隧道技术）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B9-httphttps%E5%8D%8F%E8%AE%AE%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例9-HTTP/HTTPS协议（隧道技术）</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B10-https%E9%9A%A7%E9%81%93cscdnhttps">案例10-HTTPS隧道（CS+CDN+HTTPS）</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1">转发/路由</a>
+<ul>
+<li><a href="#meterpreter">meterpreter</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF">路由技术</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81">权限维持</a>
+<ul>
+<li><a href="#%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE%E7%A5%A8%E6%8D%AE%E6%8A%80%E6%9C%AF">白银票据（票据技术）</a></li>
+<li><a href="#%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE%E7%A5%A8%E6%8D%AE%E6%8A%80%E6%9C%AF">黄金票据（票据技术）</a></li>
+</ul>
+</li>
+<li><a href="#%E9%92%93%E9%B1%BC%E6%8A%80%E6%9C%AF">钓鱼技术</a></li>
+<li><a href="#%E4%BF%9D%E6%8A%A4%E8%87%AA%E5%B7%B1">保护自己</a>
+<ul>
+<li><a href="#%E4%B8%80%E4%BA%9B%E8%B5%84%E6%96%99">一些资料</a></li>
+<li><a href="#cobalt-strike%E9%85%8D%E7%BD%AE%E9%9A%90%E8%97%8F">cobalt strike配置隐藏</a></li>
+<li><a href="#cobalt-strike%E5%9F%9F%E5%89%8D%E7%BD%AE%E6%8A%80%E6%9C%AF">cobalt strike（域前置技术）</a></li>
+<li><a href="#cobalt-strike%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E5%B0%BD%E9%87%8F%E4%B8%8D%E4%BD%BF%E7%94%A8ip%E9%87%8D%E5%AE%9A%E5%90%91%E6%8A%80%E6%9C%AF">cobalt strike隐藏技术（尽量不使用IP）重定向技术</a></li>
+<li><a href="#cobalt-strike%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E5%B0%BD%E9%87%8F%E4%B8%8D%E4%BD%BF%E7%94%A8ipcdn%E6%8A%80%E6%9C%AF">cobalt strike隐藏技术（尽量不使用IP）CDN技术</a></li>
+<li><a href="#cobalt-strike%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E8%85%BE%E8%AE%AF%E4%BA%91%E5%87%BD%E6%95%B0%E6%8A%80%E6%9C%AF">cobalt strike隐藏技术（腾讯云函数技术）</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E7%A6%81%E6%AD%A2ip%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%85%E5%85%81%E8%AE%B8cdn%E7%9A%84ip">配置禁止IP访问服务器仅允许CDN的IP</a></li>
+</ul>
+</li>
+<li><a href="#msf%E5%90%8E%E6%B8%97%E9%80%8F">MSF后渗透</a>
+<ul>
+<li><a href="#meterperter%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4">meterperter基本系统命令</a></li>
+<li><a href="#msf%E5%90%8E%E6%B8%97%E9%80%8F%E6%A8%A1%E5%9D%97">MSF后渗透模块</a></li>
+</ul>
+</li>
+<li><a href="#cobalt-strike%E5%90%8E%E6%B8%97%E9%80%8F">cobalt strike后渗透</a></li>
+<li><a href="#empire%E5%90%8E%E6%B8%97%E9%80%8F">Empire后渗透</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://Jrand-github.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
