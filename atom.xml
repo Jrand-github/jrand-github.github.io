@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Jrand-github.github.io</id>
     <title>F1n_blog</title>
-    <updated>2021-07-15T03:16:04.744Z</updated>
+    <updated>2021-07-15T03:20:23.968Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Jrand-github.github.io"/>
     <link rel="self" href="https://Jrand-github.github.io/atom.xml"/>
@@ -20,93 +20,78 @@
 <h2 id="被动信息收集">被动信息收集</h2>
 <h3 id="域名信息收集">域名信息收集</h3>
 <h4 id="whois查询">Whois查询</h4>
-<p>https://whois.aizhan.com/</p>
-<p>https://www.virustotal.com/</p>
+<p><a href="https://whois.aizhan.com/">https://whois.aizhan.com/</a></p>
+<p><a href="https://www.virustotal.com/">https://www.virustotal.com/</a></p>
 <h4 id="根域名收集备案">根域名收集（备案）</h4>
-<p>ICP备案查询：<a href="https://whois.aizhan.com/">https://whois.aizhan.com/</a></p>
-<p>天眼查：http://www.tianyancha.com</p>
+<p>ICP备案查询：<a href="http://www.beianbeian.com">http://www.beianbeian.com</a></p>
+<p>天眼查：<a href="http://www.tianyancha.com">http://www.tianyancha.com</a></p>
 <h4 id="子域名收集">子域名收集</h4>
-<p>OneForAll https://github.com/shmilylty/OneForAll</p>
-<p>ksubdomain：https://github.com/knownsec/ksubdomain</p>
-<p>子域名查询 https://phpinfo.me/domain/</p>
-<p>第三方聚合应用枚举 https://dnsdumpster.com/</p>
-<p>证书透明度公开日志枚举 http://crt.sh</p>
+<p>OneForAll <a href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll</a></p>
+<p>ksubdomain：<a href="https://github.com/knownsec/ksubdomain">https://github.com/knownsec/ksubdomain</a></p>
+<p>子域名查询 <a href="https://phpinfo.me/domain/">https://phpinfo.me/domain/</a></p>
+<p>第三方聚合应用枚举 <a href="https://dnsdumpster.com/">https://dnsdumpster.com/</a></p>
+<p>证书透明度公开日志枚举 <a href="http://crt.sh">http://crt.sh</a></p>
 <p>子域名爆破：<br>
 sublist3r、subdomainsBurte、DiscoverSubdomain、layer子域名挖掘机。</p>
-<p>OneForAll:https://e.coding.net/randhome/ctf/CTFTOOLS-OneForAll.git</p>
+<p>OneForAll:<a href="https://e.coding.net/randhome/ctf/CTFTOOLS-OneForAll.git">https://e.coding.net/randhome/ctf/CTFTOOLS-OneForAll.git</a></p>
 <h4 id="dns">DNS</h4>
 <p>https://viewdns.info/</p>
 <h4 id="查找真实ip">查找真实IP</h4>
 <ul>
 <li>
 <p>目标服务器存在CDN</p>
-<ul>
-<li>内部邮件源</li>
-<li>扫描网站测试文件</li>
-<li>分站域名</li>
-<li>国外访问https://asm.ca.com/en.ping.php</li>
-<li>全球pinghttp://ping.chinaz.com/m.pahx.com</li>
-<li>查询域名的解析记录https://www.netcraft.com</li>
-<li>APP抓包</li>
-<li>绕过CloudFlare CDN查找真实IPhttp://www.crimeflare.us/cfs.html#box</li>
-<li>https://www.cnblogs.com/qiudabai/p/9763739.html</li>
-</ul>
+<p>内部邮件源</p>
+<p>扫描网站测试文件</p>
+<p>分站域名</p>
+<p>国外访问<a href="https://asm.ca.com/en.ping.php">https://asm.ca.com/en.ping.php</a></p>
+<p>全球ping<a href="http://ping.chinaz.com/m.pahx.com">http://ping.chinaz.com/m.pahx.com</a></p>
+<p>查询域名的解析记录<a href="https://www.netcraft.com">https://www.netcraft.com</a></p>
+<p>APP抓包</p>
+<p>绕过CloudFlare CDN查找真实IP</p>
+<p><a href="http://www.crimeflare.us/cfs.html#box">http://www.crimeflare.us/cfs.html#box</a></p>
+<p><a href="https://www.cnblogs.com/qiudabai/p/9763739.html">https://www.cnblogs.com/qiudabai/p/9763739.html</a></p>
 </li>
 <li>
 <p>目标服务器不存在CDNhttp://www.ip138.com</p>
 <p>可用来找真实ip</p>
-<ul>
-<li>
-<p>http://www.siteinfotool.com/</p>
-</li>
-<li>
-<p>http://toolbar.netcraft.com/site_report</p>
-</li>
-<li>
-<p>https://dnsdumpster.com/</p>
-</li>
-<li>
-<p>https://viewdns.info/iphistory/</p>
-</li>
-<li>
-<p>https://asm.ca.com/</p>
+<p><a href="http://www.siteinfotool.com/">http://www.siteinfotool.com/</a></p>
+<p><a href="http://toolbar.netcraft.com/site_report">http://toolbar.netcraft.com/site_report</a></p>
+<p><a href="https://dnsdumpster.com/">https://dnsdumpster.com/</a></p>
+<p><a href="https://viewdns.info/iphistory/">https://viewdns.info/iphistory/</a></p>
+<p><a href="https://asm.ca.com/">https://asm.ca.com/</a></p>
 <p>fofa搜索http shodan规则</p>
-</li>
-<li>
-<p>fofa：https://search.sxisa.com/favicon.ico</p>
+<p>fofa：<a href="https://search.sxisa.com/favicon.ico">https://search.sxisa.com/favicon.ico</a></p>
 <p>shodan = http.favicon.hash:-935203314</p>
 </li>
 </ul>
-</li>
-</ul>
 <h4 id="同ip网站查询">同IP网站查询</h4>
-<p>http://www.ip-address.org/reverse-lookup/reverse-ip.php<br>
-http://www.yougetsignal.com/tools/web-sites-on-web-server/</p>
+<p><a href="http://www.ip-address.org/reverse-lookup/reverse-ip.php">http://www.ip-address.org/reverse-lookup/reverse-ip.php</a><br>
+<a href="http://www.yougetsignal.com/tools/web-sites-on-web-server/">http://www.yougetsignal.com/tools/web-sites-on-web-server/</a></p>
 <p>旁站/C段查询</p>
-<p>https://phpinfo.me/bing.php</p>
-<p>https://chapangzhan.com</p>
-<p>http://www.webscan.cc</p>
-<p>http://www.5kik.com</p>
-<p>http://phpinfo.me</p>
+<p><a href="https://phpinfo.me/bing.php">https://phpinfo.me/bing.php</a></p>
+<p><a href="https://chapangzhan.com">https://chapangzhan.com</a></p>
+<p><a href="http://www.webscan.cc">http://www.webscan.cc</a></p>
+<p><a href="http://www.5kik.com">http://www.5kik.com</a></p>
+<p><a href="http://phpinfo.me">http://phpinfo.me</a></p>
 <h3 id="指纹识别">指纹识别</h3>
-<p>BugScaner：http://whatweb.bugscaner.com/look/</p>
-<p>云悉指纹：https://www.yunsee.cn/</p>
-<p>WhatWeb：https://whatweb.net/</p>
-<p>潮汐安全团队http://finger.tidesec.net/</p>
+<p>BugScaner：<a href="http://whatweb.bugscaner.com/look/">http://whatweb.bugscaner.com/look/</a></p>
+<p>云悉指纹：<a href="https://www.yunsee.cn/">https://www.yunsee.cn/</a></p>
+<p>WhatWeb：<a href="https://whatweb.net/">https://whatweb.net/</a></p>
+<p>潮汐安全团队<a href="http://finger.tidesec.net/">http://finger.tidesec.net/</a></p>
 <h3 id="威胁情报分析">威胁情报分析</h3>
 <h4 id="联网设备查询">联网设备查询</h4>
 <ul>
 <li>
 <p>通过对全网扫描</p>
-<p>360QuaKe<strong>https://quake.360.cn/quake/welcome</strong></p>
-<p>fofa https://fofa.so/</p>
-<p>shodan https://www.shodan.io/</p>
-<p>钟馗之眼<strong>https://www.zoomeye.org/</strong></p>
+<p>360QuaKe**<a href="https://quake.360.cn/quake/welcome">https://quake.360.cn/quake/welcome</a>**</p>
+<p>fofa <a href="https://fofa.so/">https://fofa.so/</a></p>
+<p>shodan <a href="https://www.shodan.io/">https://www.shodan.io/</a></p>
+<p>钟馗之眼 <a href="https://www.zoomeye.org/">https://www.zoomeye.org/</a></p>
 </li>
 </ul>
 <h4 id="公众号小程序情报">公众号小程序情报</h4>
-<p>http://www.gsdata.cn</p>
-<p>https://newrank.cn/</p>
+<p><a href="http://www.gsdata.cn">http://www.gsdata.cn</a></p>
+<p><a href="https://newrank.cn/">https://newrank.cn/</a></p>
 <h4 id="敏感目录文件收集">敏感目录文件收集</h4>
 <ul>
 <li>nikto</li>
@@ -116,9 +101,9 @@ http://www.yougetsignal.com/tools/web-sites-on-web-server/</p>
 </ul>
 <h4 id="谷歌高级搜索">谷歌高级搜索</h4>
 <p>谷歌黑客</p>
-<p>https://pentest-tools.com/information-gathering/google-hacking#</p>
-<p>https://scan.top15.cn/web/</p>
-<p>https://www.exploit-db.com/google-hacking-database</p>
+<p><a href="https://pentest-tools.com/information-gathering/google-hacking#">https://pentest-tools.com/information-gathering/google-hacking#</a></p>
+<p><a href="https://scan.top15.cn/web/">https://scan.top15.cn/web/</a></p>
+<p><a href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
 <p>google hacking</p>
 <ul>
 <li>指定域名：<br>
@@ -135,7 +120,7 @@ intitle:管理员</li>
 <li>查找指定站点的一些基本信息：Info</li>
 <li>搜索Google里关于某些内容的缓存：cache</li>
 </ul>
-<p>https://www.exploit-db.com/google-hacking-database</p>
+<p><a href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
 <pre><code>site:*.example.org ext:php | ext:txt | ext:log
 </code></pre>
 <pre><code>site:*.example.org ext:pdf | ext:doc| ext:docx | ext:ppt | ext:pptx | ext:xls | ext:xlsx | ext:csv
@@ -155,7 +140,7 @@ site:Github.com smtp
 </code></pre>
 <h4 id="js拓展信息面">JS拓展信息面</h4>
 <p>js爬取域名，url链接</p>
-<p>https://github.com/Threezh1/JSFinder</p>
+<p><a href="https://github.com/Threezh1/JSFinder">https://github.com/Threezh1/JSFinder</a></p>
 <h2 id="主动信息收集">主动信息收集</h2>
 <h3 id="常用端口信息收集">常用端口信息收集</h3>
 <ul>
