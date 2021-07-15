@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Jrand-github.github.io</id>
     <title>F1n_blog</title>
-    <updated>2021-07-15T03:08:56.408Z</updated>
+    <updated>2021-07-15T03:16:04.744Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Jrand-github.github.io"/>
     <link rel="self" href="https://Jrand-github.github.io/atom.xml"/>
@@ -23,7 +23,7 @@
 <p>https://whois.aizhan.com/</p>
 <p>https://www.virustotal.com/</p>
 <h4 id="根域名收集备案">根域名收集（备案）</h4>
-<p>ICP备案查询：http://www.beianbeian.com</p>
+<p>ICP备案查询：<a href="https://whois.aizhan.com/">https://whois.aizhan.com/</a></p>
 <p>天眼查：http://www.tianyancha.com</p>
 <h4 id="子域名收集">子域名收集</h4>
 <p>OneForAll https://github.com/shmilylty/OneForAll</p>
