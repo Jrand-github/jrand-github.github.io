@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>WEB渗透测试指南 | F1n_blog</title>
-<link rel="shortcut icon" href="https://Jrand-github.github.io/favicon.ico?v=1626319221492">
+<link rel="shortcut icon" href="https://Jrand-github.github.io/favicon.ico?v=1626617675743">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Jrand-github.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="WEB渗透测试指南 | F1n_blog - Atom Feed" href="https://Jrand-github.github.io/atom.xml">
@@ -13,13 +13,12 @@
 
     <meta name="description" content="WEB安全攻防渗透测试实战指南
 被动信息收集
-域名信息收集
 Whois查询
 https://whois.aizhan.com/
 https://www.virustotal.com/
 根域名收集（备案）
-ICP备案查询：http://www..." />
-    <meta name="keywords" content="" />
+ICP备案查询：http://www.beianb..." />
+    <meta name="keywords" content="Web安全,漏洞挖掘" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -28,7 +27,7 @@ ICP备案查询：http://www..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://Jrand-github.github.io">
-  <img class="avatar" src="https://Jrand-github.github.io/images/avatar.png?v=1626319221492" alt="">
+  <img class="avatar" src="https://Jrand-github.github.io/images/avatar.png?v=1626617675743" alt="">
   </a>
   <h1 class="site-title">
     F1n_blog
@@ -88,8 +87,16 @@ ICP备案查询：http://www..." />
                 2021-07-15
               </span>
               <span>
-                14 min read
+                15 min read
               </span>
+              
+                <a href="https://Jrand-github.github.io/tag/websafe/" class="post-tag">
+                  # Web安全
+                </a>
+              
+                <a href="https://Jrand-github.github.io/tag/bugsafe/" class="post-tag">
+                  # 漏洞挖掘
+                </a>
               
             </div>
             
@@ -97,14 +104,13 @@ ICP备案查询：http://www..." />
               <div class="post-content">
                 <h1 id="web安全攻防渗透测试实战指南">WEB安全攻防渗透测试实战指南</h1>
 <h2 id="被动信息收集">被动信息收集</h2>
-<h3 id="域名信息收集">域名信息收集</h3>
-<h4 id="whois查询">Whois查询</h4>
+<h3 id="whois查询">Whois查询</h3>
 <p><a href="https://whois.aizhan.com/">https://whois.aizhan.com/</a></p>
 <p><a href="https://www.virustotal.com/">https://www.virustotal.com/</a></p>
-<h4 id="根域名收集备案">根域名收集（备案）</h4>
+<h3 id="根域名收集备案">根域名收集（备案）</h3>
 <p>ICP备案查询：<a href="http://www.beianbeian.com">http://www.beianbeian.com</a></p>
 <p>天眼查：<a href="http://www.tianyancha.com">http://www.tianyancha.com</a></p>
-<h4 id="子域名收集">子域名收集</h4>
+<h3 id="子域名收集">子域名收集</h3>
 <p>OneForAll <a href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll</a></p>
 <p>ksubdomain：<a href="https://github.com/knownsec/ksubdomain">https://github.com/knownsec/ksubdomain</a></p>
 <p>子域名查询 <a href="https://phpinfo.me/domain/">https://phpinfo.me/domain/</a></p>
@@ -113,37 +119,85 @@ ICP备案查询：http://www..." />
 <p>子域名爆破：<br>
 sublist3r、subdomainsBurte、DiscoverSubdomain、layer子域名挖掘机。</p>
 <p>OneForAll:<a href="https://e.coding.net/randhome/ctf/CTFTOOLS-OneForAll.git">https://e.coding.net/randhome/ctf/CTFTOOLS-OneForAll.git</a></p>
-<h4 id="dns">DNS</h4>
-<p>https://viewdns.info/</p>
-<h4 id="查找真实ip">查找真实IP</h4>
-<ul>
-<li>
-<p>目标服务器存在CDN</p>
-<p>内部邮件源</p>
-<p>扫描网站测试文件</p>
-<p>分站域名</p>
-<p>国外访问<a href="https://asm.ca.com/en.ping.php">https://asm.ca.com/en.ping.php</a></p>
-<p>全球ping<a href="http://ping.chinaz.com/m.pahx.com">http://ping.chinaz.com/m.pahx.com</a></p>
-<p>查询域名的解析记录<a href="https://www.netcraft.com">https://www.netcraft.com</a></p>
-<p>APP抓包</p>
-<p>绕过CloudFlare CDN查找真实IP</p>
-<p><a href="http://www.crimeflare.us/cfs.html#box">http://www.crimeflare.us/cfs.html#box</a></p>
-<p><a href="https://www.cnblogs.com/qiudabai/p/9763739.html">https://www.cnblogs.com/qiudabai/p/9763739.html</a></p>
-</li>
-<li>
-<p>目标服务器不存在CDNhttp://www.ip138.com</p>
-<p>可用来找真实ip</p>
-<p><a href="http://www.siteinfotool.com/">http://www.siteinfotool.com/</a></p>
-<p><a href="http://toolbar.netcraft.com/site_report">http://toolbar.netcraft.com/site_report</a></p>
-<p><a href="https://dnsdumpster.com/">https://dnsdumpster.com/</a></p>
-<p><a href="https://viewdns.info/iphistory/">https://viewdns.info/iphistory/</a></p>
-<p><a href="https://asm.ca.com/">https://asm.ca.com/</a></p>
-<p>fofa搜索http shodan规则</p>
-<p>fofa：<a href="https://search.sxisa.com/favicon.ico">https://search.sxisa.com/favicon.ico</a></p>
-<p>shodan = http.favicon.hash:-935203314</p>
-</li>
-</ul>
-<h4 id="同ip网站查询">同IP网站查询</h4>
+<h3 id="dns历史记录">DNS历史记录</h3>
+<p>https://viewdns.info/<a href="https://x.threatbook.cn/"></a></p>
+<p>https://x.threatbook.cn/<a href="https://x.threatbook.cn/"></a></p>
+<p>https://www.yunsee.cn/<a href="https://www.yunsee.cn/"></a></p>
+<h3 id="绕过cdn">绕过CDN</h3>
+<h4 id="内部邮件源">内部邮件源</h4>
+<h4 id="扫描网站测试文件">扫描网站测试文件</h4>
+<h4 id="分站域名">分站域名</h4>
+<h4 id="全球ping">全球ping</h4>
+<p><a href="https://asm.ca.com/en.ping.php">https://asm.ca.com/en.ping.php</a></p>
+<p>http://ping.chinaz.com/m.pahx.com](http://ping.chinaz.com/m.pahx.com)</p>
+<h4 id="app抓包">APP抓包</h4>
+<h4 id="dns历史记录-2">DNS历史记录</h4>
+<p><a href="https://www.netcraft.com">https://www.netcraft.com</a></p>
+<h4 id="图标-hash">图标 HASH</h4>
+<p>fofa</p>
+<pre><code>icon_hash=&quot;-247388890&quot;
+搜索使用此icon的资产。
+</code></pre>
+<p>shodan</p>
+<pre><code>shodan = http.favicon.hash:-935203314
+</code></pre>
+<p>icon_hash</p>
+<pre><code>import requests
+import mmh3
+import codecs
+print(mmh3.hash(codecs.lookup('base64').encode(requests.get('http://www.baidu.com/favicon.ico').content)[0]))
+</code></pre>
+<p>quake</p>
+<p><a href="http://quake.360.cn">http://quake.360.cn</a></p>
+<p>8.静态文件</p>
+<pre><code>title=&quot;beijing&quot;
+从标题中搜索“北京”
+
+header=&quot;elastic&quot;
+从http头中搜索“elastic”
+
+body=&quot;网络空间测绘&quot;
+从html正文中搜索“网络空间测绘”
+
+domain=&quot;qq.com&quot;
+搜索根域名带有qq.com的网站。
+
+icp=&quot;京ICP证030173号&quot;
+查找备案号为“京ICP证030173号”的网站
+搜索网站类型资产
+
+js_name=&quot;js/jquery.js&quot;
+查找网站正文中包含js/jquery.js的资产
+搜索网站类型资产
+
+js_md5=&quot;82ac3f14327a8b7ba49baa208d4eaa15&quot;
+查找js源码与之匹配的资产
+
+</code></pre>
+<h4 id="证书搜索">证书搜索</h4>
+<figure data-type="image" tabindex="1"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210717200844348-1626571466411.png" alt="image-20210717200844348" loading="lazy"></figure>
+<p>2.<a href="http://crt.sh">crt.sh</a></p>
+<pre><code>https://crt.sh/?q=8238b344a11f5a0a50d94d6f9cb3d10538f47180
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210718092312298.png" alt="image-20210718092312298" loading="lazy"></figure>
+<p>3.<a href="https://censys.io">censys.io</a></p>
+<figure data-type="image" tabindex="3"><img src="https://junrand-1255919048.cos.ap-guangzhou.myqcloud.com/Typora/image-20210718092413991.png" alt="image-20210718092413991" loading="lazy"></figure>
+<pre><code>https://search.censys.io/search?resource=hosts&amp;q=581712822A924F8564308153975822CF921347D4CEFF202DC7D4985AD489216B
+</code></pre>
+<h3 id="无法绕过cdn">无法绕过CDN</h3>
+<p>第一种情况(判断真实IP)</p>
+<pre><code>不允许使用IP访问，仅允许使用域名
+测试 curl http://www.xxx.com 正常页面
+	 curl http://xxx.xxx.xxx.xxx  错误页面
+	 curl 真实IP -H &quot;host:www.xxx.com&quot; -v 正常页面
+	 判断真实ip为真
+</code></pre>
+<p>第二种情况（无法知道真实IP）</p>
+<pre><code>扩大资产
+http://www.xxx.com:端口号
+基于这种情况开发工具
+</code></pre>
+<h3 id="同ip网站查询">同IP网站查询</h3>
 <p><a href="http://www.ip-address.org/reverse-lookup/reverse-ip.php">http://www.ip-address.org/reverse-lookup/reverse-ip.php</a><br>
 <a href="http://www.yougetsignal.com/tools/web-sites-on-web-server/">http://www.yougetsignal.com/tools/web-sites-on-web-server/</a></p>
 <p>旁站/C段查询</p>
@@ -152,13 +206,13 @@ sublist3r、subdomainsBurte、DiscoverSubdomain、layer子域名挖掘机。</p>
 <p><a href="http://www.webscan.cc">http://www.webscan.cc</a></p>
 <p><a href="http://www.5kik.com">http://www.5kik.com</a></p>
 <p><a href="http://phpinfo.me">http://phpinfo.me</a></p>
-<h3 id="指纹识别">指纹识别</h3>
+<p>指纹识别</p>
 <p>BugScaner：<a href="http://whatweb.bugscaner.com/look/">http://whatweb.bugscaner.com/look/</a></p>
 <p>云悉指纹：<a href="https://www.yunsee.cn/">https://www.yunsee.cn/</a></p>
 <p>WhatWeb：<a href="https://whatweb.net/">https://whatweb.net/</a></p>
 <p>潮汐安全团队<a href="http://finger.tidesec.net/">http://finger.tidesec.net/</a></p>
 <h3 id="威胁情报分析">威胁情报分析</h3>
-<h4 id="联网设备查询">联网设备查询</h4>
+<h3 id="联网设备查询">联网设备查询</h3>
 <ul>
 <li>
 <p>通过对全网扫描</p>
@@ -168,17 +222,17 @@ sublist3r、subdomainsBurte、DiscoverSubdomain、layer子域名挖掘机。</p>
 <p>钟馗之眼 <a href="https://www.zoomeye.org/">https://www.zoomeye.org/</a></p>
 </li>
 </ul>
-<h4 id="公众号小程序情报">公众号小程序情报</h4>
+<h3 id="公众号小程序情报">公众号小程序情报</h3>
 <p><a href="http://www.gsdata.cn">http://www.gsdata.cn</a></p>
 <p><a href="https://newrank.cn/">https://newrank.cn/</a></p>
-<h4 id="敏感目录文件收集">敏感目录文件收集</h4>
+<h3 id="敏感目录文件收集">敏感目录文件收集</h3>
 <ul>
 <li>nikto</li>
 <li>dirsearch</li>
 <li>备份文件-test404</li>
 <li>猪猪侠weakfilescan、cansina、sensitivefilescan、FileSensor</li>
 </ul>
-<h4 id="谷歌高级搜索">谷歌高级搜索</h4>
+<h3 id="谷歌高级搜索">谷歌高级搜索</h3>
 <p>谷歌黑客</p>
 <p><a href="https://pentest-tools.com/information-gathering/google-hacking#">https://pentest-tools.com/information-gathering/google-hacking#</a></p>
 <p><a href="https://scan.top15.cn/web/">https://scan.top15.cn/web/</a></p>
@@ -217,7 +271,7 @@ site:Github.com User ID='sa'
 <pre><code>site:Github.com smtp @qq.com
 site:Github.com smtp
 </code></pre>
-<h4 id="js拓展信息面">JS拓展信息面</h4>
+<h3 id="js拓展信息面">JS拓展信息面</h3>
 <p>js爬取域名，url链接</p>
 <p><a href="https://github.com/Threezh1/JSFinder">https://github.com/Threezh1/JSFinder</a></p>
 <h2 id="主动信息收集">主动信息收集</h2>
@@ -895,26 +949,30 @@ sqlmap.py  -u  &quot;http://xxx.com/1.php?id-1&quot;     -D    XXX   -T   xxx   
 <ul>
 <li><a href="#%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86">被动信息收集</a>
 <ul>
-<li><a href="#%E5%9F%9F%E5%90%8D%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86">域名信息收集</a>
-<ul>
 <li><a href="#whois%E6%9F%A5%E8%AF%A2">Whois查询</a></li>
 <li><a href="#%E6%A0%B9%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E5%A4%87%E6%A1%88">根域名收集（备案）</a></li>
 <li><a href="#%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86">子域名收集</a></li>
-<li><a href="#dns">DNS</a></li>
-<li><a href="#%E6%9F%A5%E6%89%BE%E7%9C%9F%E5%AE%9Eip">查找真实IP</a></li>
-<li><a href="#%E5%90%8Cip%E7%BD%91%E7%AB%99%E6%9F%A5%E8%AF%A2">同IP网站查询</a></li>
+<li><a href="#dns%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95">DNS历史记录</a></li>
+<li><a href="#%E7%BB%95%E8%BF%87cdn">绕过CDN</a>
+<ul>
+<li><a href="#%E5%86%85%E9%83%A8%E9%82%AE%E4%BB%B6%E6%BA%90">内部邮件源</a></li>
+<li><a href="#%E6%89%AB%E6%8F%8F%E7%BD%91%E7%AB%99%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6">扫描网站测试文件</a></li>
+<li><a href="#%E5%88%86%E7%AB%99%E5%9F%9F%E5%90%8D">分站域名</a></li>
+<li><a href="#%E5%85%A8%E7%90%83ping">全球ping</a></li>
+<li><a href="#app%E6%8A%93%E5%8C%85">APP抓包</a></li>
+<li><a href="#dns%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95-2">DNS历史记录</a></li>
+<li><a href="#%E5%9B%BE%E6%A0%87-hash">图标 HASH</a></li>
+<li><a href="#%E8%AF%81%E4%B9%A6%E6%90%9C%E7%B4%A2">证书搜索</a></li>
 </ul>
 </li>
-<li><a href="#%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB">指纹识别</a></li>
-<li><a href="#%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5%E5%88%86%E6%9E%90">威胁情报分析</a>
-<ul>
+<li><a href="#%E6%97%A0%E6%B3%95%E7%BB%95%E8%BF%87cdn">无法绕过CDN</a></li>
+<li><a href="#%E5%90%8Cip%E7%BD%91%E7%AB%99%E6%9F%A5%E8%AF%A2">同IP网站查询</a></li>
+<li><a href="#%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5%E5%88%86%E6%9E%90">威胁情报分析</a></li>
 <li><a href="#%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E6%9F%A5%E8%AF%A2">联网设备查询</a></li>
 <li><a href="#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%83%85%E6%8A%A5">公众号小程序情报</a></li>
 <li><a href="#%E6%95%8F%E6%84%9F%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%94%B6%E9%9B%86">敏感目录文件收集</a></li>
 <li><a href="#%E8%B0%B7%E6%AD%8C%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2">谷歌高级搜索</a></li>
 <li><a href="#js%E6%8B%93%E5%B1%95%E4%BF%A1%E6%81%AF%E9%9D%A2">JS拓展信息面</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86">主动信息收集</a>
